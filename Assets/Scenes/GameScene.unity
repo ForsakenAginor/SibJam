@@ -591,6 +591,7 @@ GameObject:
   - component: {fileID: 691537738}
   - component: {fileID: 691537737}
   - component: {fileID: 691537736}
+  - component: {fileID: 691537739}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -627,6 +628,7 @@ MonoBehaviour:
   _soundInitializer: {fileID: 711584909}
   _dayView: {fileID: 691537736}
   _nextDayButton: {fileID: 788541808}
+  _newQuestInitializer: {fileID: 691537739}
   _newQuestTestButton: {fileID: 1220080918}
   _resetButton: {fileID: 1060733165}
 --- !u!4 &691537738
@@ -644,6 +646,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &691537739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691537735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6fbac0f51b57649aef0c8c4c4a8b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _newQuestViewPrefab: {fileID: 2093308875015508062, guid: 6db1c1f91f794aa4a901cb17265c20d1, type: 3}
+  _holder: {fileID: 648115052}
+  _image: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
 --- !u!1 &692540798
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +2147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2165,8 +2182,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1503153463}
   - {fileID: 72851925}
+  - {fileID: 648115052}
   - {fileID: 354059799}
   - {fileID: 711584910}
-  - {fileID: 648115052}
   - {fileID: 691537738}
   - {fileID: 1513578200}

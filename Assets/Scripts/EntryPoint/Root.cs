@@ -12,6 +12,7 @@ public class Root : MonoBehaviour
 
     [SerializeField] private DayView _dayView;
     [SerializeField] private Button _nextDayButton;
+    [SerializeField] private NewQuestInitializer _newQuestInitializer;
 
     private DayData _dayData;
 
@@ -29,7 +30,7 @@ public class Root : MonoBehaviour
         Days currentDay = _dayData.GetCurrentDay();
         SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
         NewQuestCreator questCreator = new NewQuestCreator(saveLoadSystem, currentDay);
-
+        _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration);
         //*******************Delete***************
         _newQuests = questCreator.NewQuests;
         _newQuestTestButton.onClick.AddListener(OnNewQuestTestClick);
