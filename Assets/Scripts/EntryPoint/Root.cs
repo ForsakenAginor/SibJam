@@ -1,5 +1,6 @@
 using Sound;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,16 +15,31 @@ public class Root : MonoBehaviour
 
     private DayData _dayData;
 
+    //*******************Delete***************
+    [Header("TestOnly")]
+    [SerializeField] private Button _newQuestTestButton;
+    [SerializeField] private Button _resetButton;
+    private List<Quest> _newQuests;
+    //****************************************
+
     private void Start()
     {
         _soundInitializer.Init();
         _dayData = new DayData();
         Days currentDay = _dayData.GetCurrentDay();
+        SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
+        NewQuestCreator questCreator = new NewQuestCreator(saveLoadSystem, currentDay);
+
+        //*******************Delete***************
+        _newQuests = questCreator.NewQuests;
+        _newQuestTestButton.onClick.AddListener(OnNewQuestTestClick);
+        _resetButton.onClick.AddListener(PlayerPrefs.DeleteAll);
+        //***********************************************
+
+        _dayView.Init(currentDay);
 
         if(currentDay == Days.Sunday)
             _nextDayButton.gameObject.SetActive(false);
-
-        _dayView.Init(currentDay);
 
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
     }
@@ -32,6 +48,15 @@ public class Root : MonoBehaviour
     {
         _nextDayButton.onClick.RemoveListener(OnNextDayButtonClick);
     }
+
+    //*******************Delete***************
+    private void OnNewQuestTestClick()
+    {
+        foreach (var item in _newQuests)
+            Debug.Log($"{item.EventName} {item.DayObtain}");
+    }
+    //*********************
+
 
     private void OnNextDayButtonClick()
     {
