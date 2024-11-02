@@ -8,6 +8,7 @@ public class VillageEventSO
     [SerializeField] private string _description = "dTest";
     [SerializeField] private string _failDescription = "fdTest";
     [SerializeField] private string _completeDescription = "cdTest";
+    [SerializeField] private bool _isImportant = false;
     [SerializeField] private int _deadline = 3;
     [SerializeField] private Sprite _failSprite;
     [SerializeField] private Sprite _completeSprite;
@@ -19,6 +20,8 @@ public class VillageEventSO
     public string FailDescription => _failDescription;
 
     public string CompleteDescription => _completeDescription;
+    
+    public bool IsImportant => _isImportant;
 
     public int Deadline => _deadline;
 
