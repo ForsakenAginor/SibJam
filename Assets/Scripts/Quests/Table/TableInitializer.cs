@@ -11,6 +11,7 @@ public class TableInitializer : MonoBehaviour
     [SerializeField] private Transform _questViewHolder;
     [SerializeField] private Transform _iconHolder;
     [SerializeField] private Sprite _image;
+    [SerializeField] private AudioSource _buttonClickSource;
 
     private IEventsInfoGetter _eventsInfoGetter;
     private Table _table;
@@ -48,7 +49,7 @@ public class TableInitializer : MonoBehaviour
             _eventsInfoGetter.GetDescription(quest.EventName),
             quest.DaysToExpire);
         view.GetUIElement().Disable();
-        icon.Init(view.GetUIElement(), QuestPlacedCallback);
+        icon.Init(view.GetUIElement(), _buttonClickSource, QuestPlacedCallback);
     }
 
     private void QuestPlacedCallback(IKey key)

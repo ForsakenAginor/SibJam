@@ -18,6 +18,7 @@ public class Root : MonoBehaviour
     [SerializeField] private List<InteractablePeasant> _peasants;
     [SerializeField] private HealthView _healthView;
     [SerializeField] private UIElement _loseScreen;
+    [SerializeField] private UIElement _winScreen;
 
     private DayData _dayData;
     private Table _table;
@@ -39,6 +40,20 @@ public class Root : MonoBehaviour
         Days currentDay = _dayData.GetCurrentDay();
         _saveLoadSystem = new SaveLoadSystem(currentDay);
 
+        _mood = _saveLoadSystem.GetMood();
+        _healthView.Init(_mood);
+
+        if (_mood == Health.Riot)
+        {
+            _loseScreen.Enable();
+            return;
+        }
+        else if (currentDay == Days.Final)
+        {
+            _winScreen.Enable();
+            return;
+        }
+
         NewQuestCreator questCreator = new NewQuestCreator(_saveLoadSystem, currentDay);
         _questAcceptingMonitor = new(_newQuestInitializer);
         _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration, _peasants);
@@ -54,17 +69,9 @@ public class Root : MonoBehaviour
 
         _dayView.Init(currentDay);
 
-        if (currentDay == Days.Sunday)
-            _nextDayButton.gameObject.SetActive(false);
-
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled += OnAllQuestHandled;
 
-        _mood = _saveLoadSystem.GetMood();
-        _healthView.Init(_mood);
-
-        if (_mood == Health.Riot)
-            _loseScreen.Enable();
     }
 
     private void OnDestroy()

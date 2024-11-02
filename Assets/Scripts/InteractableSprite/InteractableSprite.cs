@@ -5,10 +5,11 @@ using UnityEngine.EventSystems;
 public class InteractableSprite : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private UIElement _windowThatWillBeOpened;
+    [SerializeField] private AudioSource _audioSource;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("down");
+        _audioSource.Play();
         _windowThatWillBeOpened.Enable();
     }
 

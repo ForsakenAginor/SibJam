@@ -19,7 +19,7 @@ public class InteractablePeasant : MonoBehaviour, IPointerDownHandler
         _windowThatWillBeOpened.Enable();
         _windowThatWillBeOpened = null;
 
-        _spriteRenderer.flipX = true;
+        _spriteRenderer.flipX = false;
         Vector3 target = new Vector3(_targetPoint.position.x, transform.position.y, transform.position.z);
         transform.DOMove(target, _animationDuration).SetEase(Ease.Linear);
     }
