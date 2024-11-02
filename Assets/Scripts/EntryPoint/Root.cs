@@ -23,6 +23,8 @@ public class Root : MonoBehaviour
     private Table _table;
     private Desk _desk;
     private QuestAcceptingMonitor _questAcceptingMonitor;
+    private SaveLoadSystem _saveLoadSystem;
+    private Health _mood;
 
     //*******************Delete***************
     [Header("TestOnly")]
@@ -35,13 +37,13 @@ public class Root : MonoBehaviour
         _nextDayButton.interactable = false;
         _dayData = new DayData();
         Days currentDay = _dayData.GetCurrentDay();
-        SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
+        _saveLoadSystem = new SaveLoadSystem(currentDay);
 
-        NewQuestCreator questCreator = new NewQuestCreator(saveLoadSystem, currentDay);
+        NewQuestCreator questCreator = new NewQuestCreator(_saveLoadSystem, currentDay);
         _questAcceptingMonitor = new(_newQuestInitializer);
         _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration, _peasants);
-        _table = new Table(saveLoadSystem, _newQuestInitializer, _deskInitializer, currentDay, _eventsConfiguration);
-        _desk = new Desk(saveLoadSystem, _newQuestInitializer, _tableInitializer, currentDay, _eventsConfiguration);
+        _table = new Table(_saveLoadSystem, _newQuestInitializer, _deskInitializer, currentDay, _eventsConfiguration);
+        _desk = new Desk(_saveLoadSystem, _newQuestInitializer, _tableInitializer, currentDay, _eventsConfiguration);
 
         _tableInitializer.Init(_table, _eventsConfiguration);
         _deskInitializer.Init(_desk, _eventsConfiguration);
@@ -58,10 +60,10 @@ public class Root : MonoBehaviour
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled += OnAllQuestHandled;
 
-        Health mood = saveLoadSystem.GetMood();
-        _healthView.Init(mood);
+        _mood = _saveLoadSystem.GetMood();
+        _healthView.Init(_mood);
 
-        if (mood == Health.Riot)
+        if (_mood == Health.Riot)
             _loseScreen.Enable();
     }
 
@@ -76,6 +78,7 @@ public class Root : MonoBehaviour
         _dayData.SaveDay();
         _table.SaveData();
         _desk.SaveData();
+        _saveLoadSystem.SaveMood(_mood);
         SceneManager.LoadScene(Scenes.Consequences.ToString());
     }
 

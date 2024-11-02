@@ -1512,8 +1512,8 @@ MonoBehaviour:
   - {fileID: 1602567828}
   - {fileID: 438261562}
   - {fileID: 1984597953}
-  _healthView: {fileID: 0}
-  _newQuestTestButton: {fileID: 1220080918}
+  _healthView: {fileID: 691537742}
+  _loseScreen: {fileID: 770602778}
   _resetButton: {fileID: 1060733165}
 --- !u!4 &691537738
 Transform:
@@ -1593,11 +1593,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textField: {fileID: 459126252}
   _image: {fileID: 1844553075}
-  _rageColor: {r: 0.6792453, g: 0.041651852, b: 0.041651852, a: 0}
-  _hopelessnessColor: {r: 0.7075472, g: 0.30502787, b: 0, a: 0}
-  _fearColor: {r: 0.8490566, g: 0.7928651, b: 0.028034903, a: 0}
-  _averageColors: {r: 0.1152061, g: 0.5849056, b: 0.11311853, a: 0}
-  _hapinessColors: {r: 0, g: 0.8679245, b: 0.6783514, a: 0}
+  _rageColor: {r: 0.6792453, g: 0.041651852, b: 0.041651852, a: 1}
+  _hopelessnessColor: {r: 0.7075472, g: 0.30502787, b: 0, a: 1}
+  _fearColor: {r: 0.8490566, g: 0.7928651, b: 0.028034903, a: 1}
+  _averageColors: {r: 0.1152061, g: 0.5849056, b: 0.11311853, a: 1}
+  _hapinessColors: {r: 0, g: 0.8679245, b: 0.6783514, a: 1}
 --- !u!1 &692540798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,13 +1809,14 @@ GameObject:
   - component: {fileID: 770602775}
   - component: {fileID: 770602777}
   - component: {fileID: 770602776}
+  - component: {fileID: 770602778}
   m_Layer: 5
   m_Name: GameOverScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &770602775
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1875,6 +1876,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770602774}
   m_CullTransparentMesh: 1
+--- !u!114 &770602778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770602774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa451cebf6514154da50d60574487818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &788541806
 GameObject:
   m_ObjectHideFlags: 0
@@ -3673,6 +3686,7 @@ GameObject:
   - component: {fileID: 1620686362}
   - component: {fileID: 1620686361}
   - component: {fileID: 1620686360}
+  - component: {fileID: 1620686363}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -3781,6 +3795,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620686358}
   m_CullTransparentMesh: 1
+--- !u!114 &1620686363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620686358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb7b6f973a7b014d887dbcb879d0c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scene: 0
 --- !u!1 &1839927389
 GameObject:
   m_ObjectHideFlags: 0
