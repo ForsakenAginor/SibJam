@@ -1,6 +1,5 @@
 using Sound;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,9 +14,11 @@ public class Root : MonoBehaviour
     [SerializeField] private Button _nextDayButton;
     [SerializeField] private NewQuestInitializer _newQuestInitializer;
     [SerializeField] private TableInitializer _tableInitializer;
+    [SerializeField] private DeskInitializer _deskInitializer;
 
     private DayData _dayData;
     private Table _table;
+    private Desk _desk;
 
     //*******************Delete***************
     [Header("TestOnly")]
@@ -34,8 +35,11 @@ public class Root : MonoBehaviour
         SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
         NewQuestCreator questCreator = new NewQuestCreator(saveLoadSystem, currentDay);
         _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration);
-        _table = new Table(saveLoadSystem, _newQuestInitializer, currentDay, _eventsConfiguration);
+        _table = new Table(saveLoadSystem, _newQuestInitializer, _deskInitializer, currentDay, _eventsConfiguration);
+        _desk = new Desk(saveLoadSystem, _newQuestInitializer, _tableInitializer, currentDay, _eventsConfiguration);
+
         _tableInitializer.Init(_table, _eventsConfiguration);
+        _deskInitializer.Init(_desk, _eventsConfiguration);
 
         //*******************Delete***************
         _newQuests = questCreator.NewQuests;
@@ -70,6 +74,7 @@ public class Root : MonoBehaviour
     {
         _dayData.SaveDay();
         _table.SaveData();
+        _desk.SaveData();
         SceneManager.LoadScene(Scenes.Consequences.ToString());
     }
 }

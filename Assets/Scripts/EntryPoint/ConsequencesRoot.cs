@@ -34,6 +34,8 @@ public class ConsequencesRoot : MonoBehaviour
         //TODO ****************************Create another list with completed quests
         saveLoadSystem.SaveStoredQuests(quests);
         _consequencesCardsShower.AllEventsShown += OnAllEventsShown;
+
+        //TODO ****************************Add list of completed by Hero quests to _consequencesCardsShower
         _consequencesCardsShower.Init(expiredQuests, _eventsConfiguration);
     }
 
