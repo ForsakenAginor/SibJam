@@ -20,8 +20,8 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: fdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   - Key: 1
     Value:
       _name: test
@@ -29,8 +29,8 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: fdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   - Key: 2
     Value:
       _name: test
@@ -38,8 +38,8 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: cdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   - Key: 3
     Value:
       _name: test
@@ -47,8 +47,8 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: cdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   - Key: 4
     Value:
       _name: test
@@ -56,8 +56,8 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: cdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   - Key: 5
     Value:
       _name: test
@@ -65,8 +65,8 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: cdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   - Key: 6
     Value:
       _name: test
@@ -74,8 +74,8 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: cdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   - Key: 7
     Value:
       _name: test
@@ -83,8 +83,8 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: cdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   - Key: 8
     Value:
       _name: test
@@ -92,5 +92,5 @@ MonoBehaviour:
       _failDescription: fdTest
       _completeDescription: cdTest
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 8a9876c9f56de69468c7526ef7386333, type: 3}
+      _failSprite: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}

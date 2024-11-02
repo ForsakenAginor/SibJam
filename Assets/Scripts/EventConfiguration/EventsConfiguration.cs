@@ -2,7 +2,8 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EventsConfiguration")]
-public class EventsConfiguration : UpdatableConfiguration<EventNames, VillageEventSO>, IEventsInfoGetter
+public class EventsConfiguration : UpdatableConfiguration<EventNames, VillageEventSO>,
+    IEventsInfoGetter, IEventsLifeTimeInfoGetter
 {
     public string GetDescription(EventNames name)
     {
@@ -17,6 +18,11 @@ public class EventsConfiguration : UpdatableConfiguration<EventNames, VillageEve
     public Sprite GetFailureSprite(EventNames name)
     {
         return Content.First(o => o.Key == name).Value.FailSprite;
+    }
+
+    public int GetLifeTime(EventNames name)
+    {
+        return Content.First(o => o.Key == name).Value.Deadline;
     }
 
     public string GetName(EventNames name)
