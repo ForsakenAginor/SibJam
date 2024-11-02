@@ -8,6 +8,7 @@ public class ConsequencesCardsShower : MonoBehaviour
 
     [SerializeField] private CardView _cardPrefab;
     [SerializeField] private Transform _holder;
+    [SerializeField] private AudioSource _audioSource;
 
     private IEventsInfoGetter _eventsInfoGetter;
 
@@ -28,6 +29,7 @@ public class ConsequencesCardsShower : MonoBehaviour
             view.Init(_eventsInfoGetter.GetFailureSprite(quest.EventName),
                 _eventsInfoGetter.GetName(quest.EventName),
                 _eventsInfoGetter.GetFailDescription(quest.EventName),
+                _audioSource,
                 OnQuestShown);
             _quests.Add(view.GetKey());
             QuestExpired?.Invoke(quest);
@@ -39,6 +41,7 @@ public class ConsequencesCardsShower : MonoBehaviour
             view.Init(_eventsInfoGetter.GetSuccessSprite(chosedQuest.EventName),
                 _eventsInfoGetter.GetName(chosedQuest.EventName),
                 _eventsInfoGetter.GetSuccessDescription(chosedQuest.EventName),
+                _audioSource,
                 OnQuestShown);
             _quests.Add(view.GetKey());
         }

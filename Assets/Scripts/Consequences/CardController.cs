@@ -6,6 +6,8 @@ public class CardController : MonoBehaviour, IKey
 {
     [SerializeField] private Button _button;
 
+    private AudioSource _audioSource;
+
     private Action<IKey> ButtonClick;
 
     private void Awake()
@@ -18,14 +20,16 @@ public class CardController : MonoBehaviour, IKey
         _button.onClick.RemoveListener(OnButtonClick);
     }
 
-    public void Init(Action<IKey> callback)
+    public void Init(AudioSource audioSource, Action<IKey> callback)
     {
+        _audioSource = audioSource != null ? audioSource : throw new ArgumentNullException(nameof(audioSource));
         ButtonClick = callback;
     }
 
 
     private void OnButtonClick()
     {
+        _audioSource.Play();
         ButtonClick?.Invoke(this);
         gameObject.SetActive(false);
     }

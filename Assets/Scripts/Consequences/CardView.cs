@@ -17,7 +17,7 @@ public class CardView : MonoBehaviour
         _controller = GetComponent<CardController>();
     }
 
-    public void Init(Sprite sprite, string name, string description, Action<IKey> callback)
+    public void Init(Sprite sprite, string name, string description, AudioSource audioSource, Action<IKey> callback)
     {
         if (sprite == null)
             throw new ArgumentNullException(nameof(sprite));
@@ -28,10 +28,13 @@ public class CardView : MonoBehaviour
         if (string.IsNullOrEmpty(description))
             throw new ArgumentNullException(nameof(description));
 
+        if(audioSource == null)
+            throw new ArgumentNullException(nameof(audioSource));
+
         _image.sprite = sprite;
         _header.text = name;
         _description.text = description;
-        _controller.Init(callback);
+        _controller.Init(audioSource, callback);
     }
 
     public IKey GetKey()
