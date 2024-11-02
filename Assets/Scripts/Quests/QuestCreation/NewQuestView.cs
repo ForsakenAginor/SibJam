@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(UIElement))]
 [RequireComponent(typeof(NewQuestController))]
 public class NewQuestView : MonoBehaviour
 {
@@ -11,10 +12,12 @@ public class NewQuestView : MonoBehaviour
     [SerializeField] private TMP_Text _header;
 
     private NewQuestController _controller;
+    private UIElement _uiElement;
 
     private void Awake()
     {
         _controller = GetComponent<NewQuestController>();
+        _uiElement = GetComponent<UIElement>();
     }
 
     public void Init(Sprite sprite, string name, string description, Action<IKey> accept, Action<IKey> decline)
@@ -35,4 +38,6 @@ public class NewQuestView : MonoBehaviour
     }
 
     public IKey GetKey() => _controller;
+
+    public UIElement GetUIElement() => _uiElement;
 }
