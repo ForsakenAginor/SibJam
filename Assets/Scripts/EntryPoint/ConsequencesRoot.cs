@@ -16,10 +16,27 @@ public class ConsequencesRoot : MonoBehaviour
         Days currentDay = dayData.GetCurrentDay();
         SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
         List<Quest> expiredQuests = new List<Quest>();
-        List<SerializableQuest> quests = new List<SerializableQuest>();
+        ExpireQuest(currentDay, saveLoadSystem, expiredQuests);
+        //TODO ****************************Create another list with completed quests
+
+        _consequencesCardsShower.AllEventsShown += OnAllEventsShown;
+
+        //TODO ****************************Add list of completed by Hero quests to _consequencesCardsShower
+        _consequencesCardsShower.Init(expiredQuests, _eventsConfiguration);
+    }
+
+
+    private void OnDestroy()
+    {
+        _consequencesCardsShower.AllEventsShown -= OnAllEventsShown;
+    }
+
+    private void ExpireQuest(Days currentDay, SaveLoadSystem saveLoadSystem, List<Quest> expiredQuests)
+    {
+        List<SerializableQuest> questsInTable = new List<SerializableQuest>();
+        List<SerializableQuest> questsInDesk = new List<SerializableQuest>();
         List<SerializableQuest> savedQuests = saveLoadSystem.GetStoredQuests();
 
-        //TODO**************************ADD QUESTS FROM BOARD******************
         foreach (var item in savedQuests)
         {
             Quest quest = new(item.EventName, item.DayObtain);
@@ -28,20 +45,24 @@ public class ConsequencesRoot : MonoBehaviour
             if (quest.DaysToExpire == 0)
                 expiredQuests.Add(quest);
             else
-                quests.Add(item);
+                questsInTable.Add(item);
         }
 
-        //TODO ****************************Create another list with completed quests
-        saveLoadSystem.SaveStoredQuests(quests);
-        _consequencesCardsShower.AllEventsShown += OnAllEventsShown;
+        saveLoadSystem.SaveStoredQuests(questsInTable);
+        savedQuests = saveLoadSystem.GetPlacedQuests();
 
-        //TODO ****************************Add list of completed by Hero quests to _consequencesCardsShower
-        _consequencesCardsShower.Init(expiredQuests, _eventsConfiguration);
-    }
+        foreach (var item in savedQuests)
+        {
+            Quest quest = new(item.EventName, item.DayObtain);
+            quest.CalcExpireDate(currentDay, _eventsConfiguration.GetLifeTime(quest.EventName));
 
-    private void OnDestroy()
-    {
-        _consequencesCardsShower.AllEventsShown -= OnAllEventsShown;
+            if (quest.DaysToExpire == 0)
+                expiredQuests.Add(quest);
+            else
+                questsInDesk.Add(item);
+        }
+
+        saveLoadSystem.SavePlacedQuests(questsInDesk);
     }
 
     private void OnAllEventsShown()
