@@ -10,7 +10,6 @@ public class BlackScreen : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _animator.SetBool("Start", false);
         _animator.SetBool("On", true);
     }
 
