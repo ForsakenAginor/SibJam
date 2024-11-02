@@ -1,17 +1,16 @@
 using System;
 using System.Collections.Generic;
 
-public class Table
+public class Desk
 {
     private readonly List<Quest> _quests = new List<Quest>();
     private readonly IEventsLifeTimeInfoGetter _eventsInfoGetter;
     private readonly NewQuestInitializer _newQuestInitializer;
-    private readonly DeskInitializer _desk;
+    private readonly TableInitializer _table;
     private readonly Days _currentDay;
     private readonly SaveLoadSystem _saveLoadSystem;
 
-    public Table(SaveLoadSystem saveLoadSystem, NewQuestInitializer newQuestInitializer,
-        DeskInitializer desk,
+    public Desk(SaveLoadSystem saveLoadSystem, NewQuestInitializer newQuestInitializer, TableInitializer table,
         Days current, IEventsLifeTimeInfoGetter configuration)
     {
         _saveLoadSystem = saveLoadSystem != null ?
@@ -23,29 +22,23 @@ public class Table
         _newQuestInitializer = newQuestInitializer != null ?
             newQuestInitializer :
             throw new ArgumentNullException(nameof(newQuestInitializer));
-        _desk = desk != null ?
-            desk :
-            throw new ArgumentNullException(nameof(desk));
+        _table = table != null ?
+            table : 
+            throw new ArgumentNullException(nameof(table));
         _currentDay = current;
         CreateQuestList();
-        _newQuestInitializer.QuestStored += OnQuestStored;
-        _desk.QuestStored += OnQuestStored;
+        _newQuestInitializer.QuestPlaced += OnQuestPlaced;
+        _table.QuestPlaced += OnQuestPlaced;
     }
 
-    ~Table()
-    {
-        _newQuestInitializer.QuestStored -= OnQuestStored;
-        _desk.QuestStored -= OnQuestStored;
-    }
-
-    public event Action<Quest> QuestStored;
+    public event Action<Quest> QuestPlaced;
 
     public IEnumerable<Quest> Quests => _quests;
 
     public void RemoveQuest(Quest quest)
     {
         if (_quests.Contains(quest) == false)
-            throw new InvalidOperationException("Quest don't existing in table");
+            throw new InvalidOperationException("Quest don't existing in Desk");
 
         _quests.Remove(quest);
     }
@@ -54,25 +47,25 @@ public class Table
     {
         List<SerializableQuest> quests = new List<SerializableQuest>();
 
-        foreach(var quest in _quests)
+        foreach (var quest in _quests)
             quests.Add(quest.Serialize());
 
-        _saveLoadSystem.SaveStoredQuests(quests);
+        _saveLoadSystem.SavePlacedQuests(quests);
     }
 
-    private void OnQuestStored(Quest quest)
+    private void OnQuestPlaced(Quest quest)
     {
         if (quest == null)
             throw new ArgumentNullException(nameof(quest));
 
         quest.CalcExpireDate(_currentDay, _eventsInfoGetter.GetLifeTime(quest.EventName));
         _quests.Add(quest);
-        QuestStored?.Invoke(quest);
+        QuestPlaced?.Invoke(quest);
     }
 
     private void CreateQuestList()
     {
-        List<SerializableQuest> list = _saveLoadSystem.GetStoredQuests();
+        List<SerializableQuest> list = _saveLoadSystem.GetPlacedQuests();
 
         if (list == null)
             return;
@@ -81,7 +74,7 @@ public class Table
         {
             Quest quest = new(item.EventName, item.DayObtain);
             quest.CalcExpireDate(_currentDay, _eventsInfoGetter.GetLifeTime(quest.EventName));
-            _quests.Add(quest);        
+            _quests.Add(quest);
         }
     }
 }
