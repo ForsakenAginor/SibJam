@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Root : MonoBehaviour
 {
+    [SerializeField] private Desk_Lists _DeskLists;
     [SerializeField] private EventsConfiguration _eventsConfiguration;
     [SerializeField] private SoundInitializer _soundInitializer;
 
@@ -26,6 +27,7 @@ public class Root : MonoBehaviour
         _dayView.Init(currentDay);
 
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
+        _DeskLists.init(_eventsConfiguration);
     }
 
     private void OnDestroy()
