@@ -7,9 +7,14 @@ public class Table
     private readonly IEventsLifeTimeInfoGetter _eventsInfoGetter;
     private readonly NewQuestInitializer _newQuestInitializer;
     private readonly Days _currentDay;
+    private readonly SaveLoadSystem _saveLoadSystem;
 
-    public Table(NewQuestInitializer newQuestInitializer, Days current, IEventsLifeTimeInfoGetter configuration)
+    public Table(SaveLoadSystem saveLoadSystem, NewQuestInitializer newQuestInitializer,
+        Days current, IEventsLifeTimeInfoGetter configuration)
     {
+        _saveLoadSystem = saveLoadSystem != null ?
+            saveLoadSystem :
+            throw new ArgumentNullException(nameof(saveLoadSystem));
         _eventsInfoGetter = configuration != null ?
             configuration :
             throw new ArgumentNullException(nameof(configuration));
@@ -17,7 +22,7 @@ public class Table
             newQuestInitializer :
             throw new ArgumentNullException(nameof(newQuestInitializer));
         _currentDay = current;
-
+        CreateQuestList();
         _newQuestInitializer.QuestStored += OnQuestStored;
     }
 
@@ -33,6 +38,16 @@ public class Table
         _quests.Remove(quest);
     }
 
+    public void SaveData()
+    {
+        List<SerializableQuest> quests = new List<SerializableQuest>();
+
+        foreach(var quest in _quests)
+            quests.Add(quest.Serialize());
+
+        _saveLoadSystem.SaveStoredQuests(quests);
+    }
+
     private void OnQuestStored(Quest quest)
     {
         if (quest == null)
@@ -41,5 +56,20 @@ public class Table
         quest.CalcExpireDate(_currentDay, _eventsInfoGetter.GetLifeTime(quest.EventName));
         _quests.Add(quest);
         QuestStored?.Invoke(quest);
+    }
+
+    private void CreateQuestList()
+    {
+        List<SerializableQuest> list = _saveLoadSystem.GetStoredQuests();
+
+        if (list == null)
+            return;
+
+        foreach (var item in list)
+        {
+            Quest quest = new(item.EventName, item.DayObtain);
+            quest.CalcExpireDate(_currentDay, _eventsInfoGetter.GetLifeTime(quest.EventName));
+            _quests.Add(quest);        
+        }
     }
 }

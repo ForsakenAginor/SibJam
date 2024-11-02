@@ -15,6 +15,7 @@ public class Root : MonoBehaviour
     [SerializeField] private TableInitializer _tableInitializer;
 
     private DayData _dayData;
+    private Table _table;
 
     //*******************Delete***************
     [Header("TestOnly")]
@@ -31,8 +32,8 @@ public class Root : MonoBehaviour
         SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
         NewQuestCreator questCreator = new NewQuestCreator(saveLoadSystem, currentDay);
         _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration);
-        Table table = new Table(_newQuestInitializer, currentDay, _eventsConfiguration);
-        _tableInitializer.Init(table, _eventsConfiguration);
+        _table = new Table(saveLoadSystem, _newQuestInitializer, currentDay, _eventsConfiguration);
+        _tableInitializer.Init(_table, _eventsConfiguration);
 
         //*******************Delete***************
         _newQuests = questCreator.NewQuests;
@@ -65,6 +66,7 @@ public class Root : MonoBehaviour
     private void OnNextDayButtonClick()
     {
         _dayData.SaveDay();
+        _table.SaveData();
         SceneManager.LoadScene(Scenes.GameScene.ToString());
     }
 }
