@@ -1,5 +1,4 @@
 using Sound;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +11,8 @@ public class Root : MonoBehaviour
 
     [SerializeField] private DayView _dayView;
     [SerializeField] private Button _nextDayButton;
+    [SerializeField] private NewQuestInitializer _newQuestInitializer;
+    [SerializeField] private TableInitializer _tableInitializer;
 
     private DayData _dayData;
 
@@ -29,6 +30,9 @@ public class Root : MonoBehaviour
         Days currentDay = _dayData.GetCurrentDay();
         SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
         NewQuestCreator questCreator = new NewQuestCreator(saveLoadSystem, currentDay);
+        _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration);
+        Table table = new Table(_newQuestInitializer, currentDay, _eventsConfiguration);
+        _tableInitializer.Init(table, _eventsConfiguration);
 
         //*******************Delete***************
         _newQuests = questCreator.NewQuests;
