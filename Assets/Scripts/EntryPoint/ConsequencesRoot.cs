@@ -1,5 +1,4 @@
 ﻿using Sound;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +11,8 @@ public class ConsequencesRoot : MonoBehaviour
     [SerializeField] private ConsequencesCardsShower _consequencesCardsShower;
 
     [SerializeField] private float _duration;
+
+    private HealthDamageSystem _healthDamageSystem;
 
     private void Start()
     {
@@ -34,10 +35,9 @@ public class ConsequencesRoot : MonoBehaviour
         ExpireQuests(currentDay, expiredQuests, quests, savedQuests);
         saveLoadSystem.SavePlacedQuests(quests);
         _consequencesCardsShower.AllEventsShown += OnAllEventsShown;
+        _healthDamageSystem = new HealthDamageSystem(_consequencesCardsShower, _eventsConfiguration, saveLoadSystem);
 
         StartCoroutine(WaitAnimationPlayed(expiredQuests, chosedQuest));
-        //TODO ****************************Create another list with completed quests
-        //TODO ****************************Add list of completed by Hero quests to _consequencesCardsShower
     }
 
     private void OnDestroy()
@@ -69,23 +69,7 @@ public class ConsequencesRoot : MonoBehaviour
 
     private void OnAllEventsShown()
     {
+        _healthDamageSystem.SaveMood();
         SceneManager.LoadScene(Scenes.GameScene.ToString());
-    }
-}
-
-public class RandomQuestPicker
-{
-    public Quest ChoseRandomQuest(List<SerializableQuest> quests)
-    {
-        if(quests == null)
-            throw new ArgumentNullException(nameof(quests));
-        
-        if (quests.Count == 0)
-            return null;
-
-        int index = UnityEngine.Random.Range(0, quests.Count);
-        Quest quest = new Quest(quests[index].EventName, quests[index].DayObtain);
-        quests.RemoveAt(index);
-        return quest;
     }
 }
