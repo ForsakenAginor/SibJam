@@ -13,12 +13,13 @@ public class ConsequencesCardsShower : MonoBehaviour
 
     public event Action AllEventsShown;
 
-    public void Init(IEnumerable<Quest> expiredQuests, IEventsInfoGetter configuration)
+    public void Init(IEnumerable<Quest> expiredQuests, Quest chosedQuest, IEventsInfoGetter configuration)
     {
         _eventsInfoGetter = configuration != null ? configuration : throw new ArgumentNullException(nameof(configuration));
 
         if (expiredQuests == null)
             throw new ArgumentNullException(nameof(expiredQuests));
+
 
         foreach (var quest in expiredQuests)
         {
@@ -26,6 +27,16 @@ public class ConsequencesCardsShower : MonoBehaviour
             view.Init(_eventsInfoGetter.GetFailureSprite(quest.EventName),
                 _eventsInfoGetter.GetName(quest.EventName),
                 _eventsInfoGetter.GetFailDescription(quest.EventName),
+                OnQuestShown);
+            _quests.Add(view.GetKey());
+        }
+
+        if(chosedQuest != null)
+        {
+            var view = Instantiate(_cardPrefab, _holder);
+            view.Init(_eventsInfoGetter.GetSuccessSprite(chosedQuest.EventName),
+                _eventsInfoGetter.GetName(chosedQuest.EventName),
+                _eventsInfoGetter.GetSuccessDescription(chosedQuest.EventName),
                 OnQuestShown);
             _quests.Add(view.GetKey());
         }
