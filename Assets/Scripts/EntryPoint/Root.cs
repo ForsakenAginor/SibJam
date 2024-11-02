@@ -18,6 +18,7 @@ public class Root : MonoBehaviour
     [SerializeField] private List<InteractablePeasant> _peasants;
     [SerializeField] private HealthView _healthView;
     [SerializeField] private UIElement _loseScreen;
+    [SerializeField] private UIElement _winScreen;
 
     private DayData _dayData;
     private Table _table;
@@ -54,8 +55,6 @@ public class Root : MonoBehaviour
 
         _dayView.Init(currentDay);
 
-        if (currentDay == Days.Sunday)
-            _nextDayButton.gameObject.SetActive(false);
 
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled += OnAllQuestHandled;
@@ -65,6 +64,8 @@ public class Root : MonoBehaviour
 
         if (_mood == Health.Riot)
             _loseScreen.Enable();
+        else if (currentDay == Days.Final)
+            _winScreen.Enable();
     }
 
     private void OnDestroy()
