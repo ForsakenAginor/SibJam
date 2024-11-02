@@ -20,7 +20,7 @@ public class NewQuestView : MonoBehaviour
         _uiElement = GetComponent<UIElement>();
     }
 
-    public void Init(Sprite sprite, string name, string description, Action<IKey> accept, Action<IKey> decline)
+    public void Init(Sprite sprite, string name, string description, AudioSource audioSource, Action<IKey> accept, Action<IKey> decline)
     {
         if (sprite == null)
             throw new ArgumentNullException(nameof(sprite));
@@ -31,10 +31,13 @@ public class NewQuestView : MonoBehaviour
         if (string.IsNullOrEmpty(description))
             throw new ArgumentNullException(nameof(description));
 
+        if (audioSource == null)
+            throw new ArgumentNullException(nameof(audioSource));
+
         _image.sprite = sprite;
         _header.text = name;
         _description.text = description;
-        _controller.Init(accept, decline);
+        _controller.Init(audioSource, accept, decline);
     }
 
     public IKey GetKey() => _controller;

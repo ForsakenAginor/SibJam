@@ -40,6 +40,20 @@ public class Root : MonoBehaviour
         Days currentDay = _dayData.GetCurrentDay();
         _saveLoadSystem = new SaveLoadSystem(currentDay);
 
+        _mood = _saveLoadSystem.GetMood();
+        _healthView.Init(_mood);
+
+        if (_mood == Health.Riot)
+        {
+            _loseScreen.Enable();
+            return;
+        }
+        else if (currentDay == Days.Final)
+        {
+            _winScreen.Enable();
+            return;
+        }
+
         NewQuestCreator questCreator = new NewQuestCreator(_saveLoadSystem, currentDay);
         _questAcceptingMonitor = new(_newQuestInitializer);
         _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration, _peasants);
@@ -55,17 +69,9 @@ public class Root : MonoBehaviour
 
         _dayView.Init(currentDay);
 
-
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled += OnAllQuestHandled;
 
-        _mood = _saveLoadSystem.GetMood();
-        _healthView.Init(_mood);
-
-        if (_mood == Health.Riot)
-            _loseScreen.Enable();
-        else if (currentDay == Days.Final)
-            _winScreen.Enable();
     }
 
     private void OnDestroy()
