@@ -1,4 +1,5 @@
 using Sound;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,9 +16,12 @@ public class Root : MonoBehaviour
     [SerializeField] private TableInitializer _tableInitializer;
     [SerializeField] private DeskInitializer _deskInitializer;
 
+    [SerializeField] private List<InteractablePeasant> _peasants;
+
     private DayData _dayData;
     private Table _table;
     private Desk _desk;
+    private QuestAcceptingMonitor _questAcceptingMonitor;
 
     //*******************Delete***************
     [Header("TestOnly")]
@@ -29,11 +33,13 @@ public class Root : MonoBehaviour
     private void Start()
     {
         _soundInitializer.Init();
+        _nextDayButton.interactable = false;
         _dayData = new DayData();
         Days currentDay = _dayData.GetCurrentDay();
         SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
         NewQuestCreator questCreator = new NewQuestCreator(saveLoadSystem, currentDay);
-        _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration);
+        _questAcceptingMonitor = new(_newQuestInitializer);
+        _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration, _peasants);
         _table = new Table(saveLoadSystem, _newQuestInitializer, _deskInitializer, currentDay, _eventsConfiguration);
         _desk = new Desk(saveLoadSystem, _newQuestInitializer, _tableInitializer, currentDay, _eventsConfiguration);
 
@@ -52,11 +58,13 @@ public class Root : MonoBehaviour
             _nextDayButton.gameObject.SetActive(false);
 
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
+        _questAcceptingMonitor.AllQuestsHandled += OnAllQuestHandled;
     }
 
     private void OnDestroy()
     {
         _nextDayButton.onClick.RemoveListener(OnNextDayButtonClick);
+        _questAcceptingMonitor.AllQuestsHandled -= OnAllQuestHandled;
     }
 
     //*******************Delete***************
@@ -74,5 +82,10 @@ public class Root : MonoBehaviour
         _table.SaveData();
         _desk.SaveData();
         SceneManager.LoadScene(Scenes.Consequences.ToString());
+    }
+
+    private void OnAllQuestHandled()
+    {
+        _nextDayButton.interactable = true;
     }
 }

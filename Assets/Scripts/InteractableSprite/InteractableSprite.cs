@@ -11,4 +11,9 @@ public class InteractableSprite : MonoBehaviour, IPointerDownHandler
         Debug.Log("down");
         _windowThatWillBeOpened.Enable();
     }
+
+    protected void SetTargetWindow(UIElement uIElement)
+    {
+        _windowThatWillBeOpened = uIElement;
+    }
 }
