@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class class_list
+[System.Serializable]
+public class Class_List
 {
     public string Name;
     public string Description;
