@@ -22,7 +22,8 @@ public class QuestIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         Chose?.Invoke(this);
         _card.Disable();
-        gameObject.SetActive(false);
+        Destroy(_card.gameObject);
+        Destroy(gameObject);
     }
 
     public void Init(UIElement card, Action<IKey> accept)

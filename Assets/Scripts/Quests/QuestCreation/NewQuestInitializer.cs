@@ -15,12 +15,17 @@ public class NewQuestInitializer : MonoBehaviour
     public event Action<Quest> QuestPlaced;
     public event Action<Quest> QuestStored;
 
-    public void Init(IEnumerable<Quest> newQuests, IEventsInfoGetter configuration)
+    public void Init(IEnumerable<Quest> newQuests, IEventsInfoGetter configuration, List<InteractablePeasant> peasants)
     {
+        if(peasants == null)
+            throw new ArgumentNullException(nameof(peasants));
+
         _eventsInfoGetter = configuration != null ? configuration : throw new ArgumentNullException(nameof(configuration));
 
         if (newQuests == null)
             throw new ArgumentNullException(nameof(newQuests));
+
+        List<UIElement> list = new List<UIElement>();
 
         foreach(var newQuest in newQuests)
         {
@@ -32,7 +37,16 @@ public class NewQuestInitializer : MonoBehaviour
                 _eventsInfoGetter.GetDescription(newQuest.EventName),
                 QuestPlacedCallback,
                 QuestStoredCallback);
+            UIElement ui = view.GetUIElement();
+            ui.Disable();
+            list.Add(ui);
         }
+
+        if (peasants.Count != list.Count)
+            throw new Exception("peasants count don't equal quests count");
+
+        for(int i = 0; i < peasants.Count; i++)
+            peasants[i].Init(list[i]);        
     }
 
     private void QuestPlacedCallback(IKey key)
