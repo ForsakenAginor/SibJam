@@ -156,7 +156,7 @@ MonoBehaviour:
   _soundInitializer: {fileID: 1710582302}
   _eventsConfiguration: {fileID: 11400000, guid: af131c48d54162146b27dfb089d28410, type: 2}
   _consequencesCardsShower: {fileID: 282873238}
-  _duration: 5
+  _duration: 0.1
 --- !u!4 &282873237
 Transform:
   m_ObjectHideFlags: 0
