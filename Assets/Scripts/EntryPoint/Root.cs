@@ -1,5 +1,6 @@
 using Sound;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -67,6 +68,6 @@ public class Root : MonoBehaviour
     {
         _dayData.SaveDay();
         _table.SaveData();
-        SceneManager.LoadScene(Scenes.GameScene.ToString());
+        SceneManager.LoadScene(Scenes.Consequences.ToString());
     }
 }
