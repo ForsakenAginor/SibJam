@@ -3,7 +3,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "EventsConfiguration")]
 public class EventsConfiguration : UpdatableConfiguration<EventNames, VillageEventSO>,
-    IEventsInfoGetter, IEventsLifeTimeInfoGetter
+    IEventsInfoGetter, IEventsLifeTimeInfoGetter, IImportantInfoGetter
 {
     public string GetDescription(EventNames name)
     {
@@ -18,6 +18,11 @@ public class EventsConfiguration : UpdatableConfiguration<EventNames, VillageEve
     public Sprite GetFailureSprite(EventNames name)
     {
         return Content.First(o => o.Key == name).Value.FailSprite;
+    }
+
+    public bool GetImportantStatus(EventNames name)
+    {
+        return Content.First(o => o.Key == name).Value.IsImportant;
     }
 
     public int GetLifeTime(EventNames name)

@@ -5,16 +5,19 @@ public class SaveLoadSystem
     private const string AvailableQuests = nameof(AvailableQuests);
     private const string StoredQuests = nameof(StoredQuests);
     private const string PlacedQuests = nameof(PlacedQuests);
+    private const string Mood = nameof(Mood);
 
     private readonly DataStorage<List<EventNames>> _availableQuests;
     private readonly DataStorage<List<SerializableQuest>> _storedQuests;
     private readonly DataStorage<List<SerializableQuest>> _placedQuests;
+    private readonly DataStorage<Health> _peoplesMood;
 
     public SaveLoadSystem(Days currentDay)
     {
         _availableQuests = new DataStorage<List<EventNames>>(AvailableQuests, currentDay);
         _storedQuests = new DataStorage<List<SerializableQuest>>(StoredQuests, currentDay);
         _placedQuests = new DataStorage<List<SerializableQuest>>(PlacedQuests, currentDay);
+        _peoplesMood = new DataStorage<Health>(Mood, currentDay);
     }
 
     public List<EventNames> GetAvailableQuests() => _availableQuests.LoadData();
@@ -28,4 +31,8 @@ public class SaveLoadSystem
     public List<SerializableQuest> GetPlacedQuests() => _placedQuests.LoadData();
 
     public void SavePlacedQuests(List<SerializableQuest> quests) => _placedQuests.SaveData(quests);
+
+    public Health GetMood() => _peoplesMood.LoadData();
+
+    public void SaveMood(Health mood) => _peoplesMood.SaveData(mood);
 }

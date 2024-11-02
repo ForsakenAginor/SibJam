@@ -12,6 +12,7 @@ public class ConsequencesCardsShower : MonoBehaviour
     private IEventsInfoGetter _eventsInfoGetter;
 
     public event Action AllEventsShown;
+    public event Action<Quest> QuestExpired;
 
     public void Init(IEnumerable<Quest> expiredQuests, Quest chosedQuest, IEventsInfoGetter configuration)
     {
@@ -29,6 +30,7 @@ public class ConsequencesCardsShower : MonoBehaviour
                 _eventsInfoGetter.GetFailDescription(quest.EventName),
                 OnQuestShown);
             _quests.Add(view.GetKey());
+            QuestExpired?.Invoke(quest);
         }
 
         if(chosedQuest != null)
