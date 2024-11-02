@@ -20,4 +20,12 @@
     {
         _daysToExpire = (int)_dayObtain + lifeTime - (int)currentDay;
     }
+
+    public SerializableQuest Serialize()
+    {
+        SerializableQuest quest = new SerializableQuest();
+        quest.EventName = _eventName;
+        quest.DayObtain = _dayObtain;
+        return quest;
+    }
 }
