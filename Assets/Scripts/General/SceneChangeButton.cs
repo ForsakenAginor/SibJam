@@ -7,14 +7,12 @@ public class SceneChangeButton : MonoBehaviour
 {
     [SerializeField] private Scenes _scene;
     private Button _button;
-    [SerializeField] private GameObject BS;
-    private Animator _animator;
 
     private void Awake()
     {
         _button = GetComponent<Button>();
         _button.onClick.AddListener(OnButtonClick);
-        _animator = BS.GetComponent<Animator>();
+
     }
 
     private void OnDestroy()
