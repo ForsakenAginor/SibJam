@@ -1999,8 +1999,8 @@ GameObject:
   - component: {fileID: 691537739}
   - component: {fileID: 691537740}
   - component: {fileID: 691537741}
-  - component: {fileID: 691537742}
   - component: {fileID: 691537743}
+  - component: {fileID: 691537744}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -2044,7 +2044,7 @@ MonoBehaviour:
   - {fileID: 1602567828}
   - {fileID: 438261562}
   - {fileID: 1984597953}
-  _healthView: {fileID: 691537742}
+  _healthView: {fileID: 691537744}
   _loseScreen: {fileID: 770602778}
   _winScreen: {fileID: 1905621375}
   _moodInfoView: {fileID: 691537743}
@@ -2117,25 +2117,6 @@ MonoBehaviour:
   _iconHolder: {fileID: 37746901}
   _image: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
   _buttonClickSource: {fileID: 1934630178}
---- !u!114 &691537742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691537735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4627ae42486664a4091d20f18e87be87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _textField: {fileID: 459126252}
-  _image: {fileID: 1844553075}
-  _rageColor: {r: 0.6792453, g: 0.041651852, b: 0.041651852, a: 1}
-  _hopelessnessColor: {r: 0.7075472, g: 0.30502787, b: 0, a: 1}
-  _fearColor: {r: 0.8490566, g: 0.7928651, b: 0.028034903, a: 1}
-  _averageColors: {r: 0.1152061, g: 0.5849056, b: 0.11311853, a: 1}
-  _hapinessColors: {r: 0, g: 0.8679245, b: 0.6783514, a: 1}
 --- !u!114 &691537743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2150,6 +2131,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _infoWindow: {fileID: 1905621375}
   _textField: {fileID: 1913985342}
+--- !u!114 &691537744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691537735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a551e50576909494bbc87447316a93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 459126252}
+  _image: {fileID: 1844553075}
+  _rageColor: {r: 0.6509434, g: 0.076762185, b: 0.076762185, a: 1}
+  _hopelessnessColor: {r: 0.745283, g: 0.43294162, b: 0.010546438, a: 1}
+  _fearColor: {r: 0.8962264, g: 0.830754, b: 0.012682426, a: 1}
+  _averageColors: {r: 0.26308778, g: 0.7372549, b: 0, a: 1}
+  _hapinessColors: {r: 0.09411764, g: 0.8, b: 0.43635237, a: 1}
 --- !u!1 &692540798
 GameObject:
   m_ObjectHideFlags: 0
