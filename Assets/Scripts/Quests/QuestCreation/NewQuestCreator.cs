@@ -9,7 +9,7 @@ public class NewQuestCreator
 
     public NewQuestCreator(SaveLoadSystem saveLoadSystem, Days currentDay, int questsAmount = 3)
     {
-        if(questsAmount <= 0)
+        if (questsAmount <= 0)
             throw new ArgumentOutOfRangeException(nameof(questsAmount));
 
         _saveLoadSystem = saveLoadSystem != null
@@ -27,15 +27,29 @@ public class NewQuestCreator
         }
 
 
-        RandomQuestGetter randomQuestGetter = new (_availableQuests, currentDay);
+        RandomQuestGetter randomQuestGetter = new(_availableQuests, currentDay);
 
-        for (int i = 0; i < questsAmount; i++)
+        if (currentDay != Days.Monday)
         {
-            Quest quest = randomQuestGetter.GetRandomQuest();
+            for (int i = 0; i < questsAmount; i++)
+            {
+                Quest quest = randomQuestGetter.GetRandomQuest();
 
-            if(quest != null)
-                _newQuests.Add(quest);
+                if (quest != null)
+                    _newQuests.Add(quest);
+            }
         }
+        else
+        {
+            for (int i = 0; i < questsAmount; i++)
+            {
+                Quest quest = randomQuestGetter.GetTutorialQuest();
+
+                if (quest != null)
+                    _newQuests.Add(quest);
+            }
+        }
+
 
         _saveLoadSystem.SaveAvailableQuests(_availableQuests);
     }
