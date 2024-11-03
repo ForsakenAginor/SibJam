@@ -6,7 +6,7 @@ using UnityEngine;
 public class DayView : MonoBehaviour
 {
     [SerializeField] private TMP_Text _textField;
-    public GameObject text;
+    public Pointclass text;
     public Animator _animator;
 
 
