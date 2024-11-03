@@ -7,5 +7,5 @@
     Friday,
     Saturday,
     Sunday,
-    Final,
+    Final
 }
