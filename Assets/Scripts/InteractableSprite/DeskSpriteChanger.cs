@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -54,7 +53,7 @@ public class DeskSpriteChanger : MonoBehaviour
             _renderer.sprite = _emptyDesk;
             _mark.Disable();
         }
-        else if (_desk.Quests.Count() == 1)
+        else if (_desk.Quests.Count() >= 1 && _desk.Quests.Count() < 3)
         {
             _renderer.sprite = _oneQuestDesk;
             _mark.Enable();
@@ -78,13 +77,13 @@ public class DeskSpriteChanger : MonoBehaviour
             _renderer.sprite = _emptyDesk;
             _mark.Disable();
         }
-        else if(quests == 0 && isFirstCall == false)
+        else if (quests == 0 && isFirstCall == false)
         {
             _renderer.sprite = _emptyDesk;
             _mark.Disable();
             _questionMark.Enable();
         }
-        else if (quests == 1)
+        else if (quests >= 1 && quests < 3)
         {
             _renderer.sprite = _oneQuestDesk;
             _mark.Enable();
