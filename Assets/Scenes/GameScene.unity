@@ -1545,7 +1545,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e1f67655feb8a8f4fb2031ca9a6e7beb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1590,7 +1590,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationDuration: 3
-  _spriteRenderer: {fileID: 438261561}
   _targetPoint: {fileID: 2112555159}
 --- !u!1 &459126250
 GameObject:
@@ -4524,7 +4523,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e1f67655feb8a8f4fb2031ca9a6e7beb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4569,7 +4568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationDuration: 3
-  _spriteRenderer: {fileID: 1602567827}
   _targetPoint: {fileID: 2112555159}
 --- !u!1 &1610953629
 GameObject:
@@ -5834,7 +5832,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: e1f67655feb8a8f4fb2031ca9a6e7beb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5879,7 +5877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationDuration: 3
-  _spriteRenderer: {fileID: 1984597952}
   _targetPoint: {fileID: 2112555159}
 --- !u!1 &1989935445
 GameObject:

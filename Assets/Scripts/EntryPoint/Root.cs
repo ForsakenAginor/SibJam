@@ -54,7 +54,7 @@ public class Root : MonoBehaviour
             _winScreen.Enable();
             return;
         }
-        else
+        else if (currentDay != Days.Monday)
         {
             _moodInfoView.ShowMoodInfo(_mood);
         }
