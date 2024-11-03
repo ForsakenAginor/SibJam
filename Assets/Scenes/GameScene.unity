@@ -2001,6 +2001,7 @@ GameObject:
   - component: {fileID: 691537741}
   - component: {fileID: 691537742}
   - component: {fileID: 691537743}
+  - component: {fileID: 691537744}
   m_Layer: 0
   m_Name: Logic
   m_TagString: Untagged
@@ -2150,6 +2151,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _infoWindow: {fileID: 1905621375}
   _textField: {fileID: 1913985342}
+--- !u!114 &691537744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691537735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a551e50576909494bbc87447316a93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 459126252}
+  _image: {fileID: 1844553075}
+  _rageColor: {r: 0.6509434, g: 0.076762185, b: 0.076762185, a: 1}
+  _hopelessnessColor: {r: 0.745283, g: 0.43294162, b: 0.010546438, a: 1}
+  _fearColor: {r: 0.8962264, g: 0.830754, b: 0.012682426, a: 1}
+  _averageColors: {r: 0.26308778, g: 0.7372549, b: 0, a: 1}
+  _hapinessColors: {r: 0.09411764, g: 0.8, b: 0.43635237, a: 1}
 --- !u!1 &692540798
 GameObject:
   m_ObjectHideFlags: 0
