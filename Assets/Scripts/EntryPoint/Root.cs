@@ -21,6 +21,7 @@ public class Root : MonoBehaviour
     [SerializeField] private UIElement _winScreen;
     [SerializeField] private MoodInfoView _moodInfoView;
     [SerializeField] private BugSpriteChanger _bugSpriteChanger;
+    [SerializeField] private DeskSpriteChanger _deskSpriteChanger;
 
     private DayData _dayData;
     private Table _table;
@@ -67,6 +68,7 @@ public class Root : MonoBehaviour
         _desk = new Desk(_saveLoadSystem, _newQuestInitializer, _tableInitializer, currentDay, _eventsConfiguration);
 
         _bugSpriteChanger.Init(_table);
+        _deskSpriteChanger.Init(_desk);
         _tableInitializer.Init(_table, _eventsConfiguration);
         _deskInitializer.Init(_desk, _eventsConfiguration);
 

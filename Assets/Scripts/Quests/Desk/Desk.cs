@@ -32,6 +32,7 @@ public class Desk
     }
 
     public event Action<Quest> QuestPlaced;
+    public event Action QuestRemoved;
 
     public IEnumerable<Quest> Quests => _quests;
 
@@ -41,6 +42,7 @@ public class Desk
             throw new InvalidOperationException("Quest don't existing in Desk");
 
         _quests.Remove(quest);
+        QuestRemoved?.Invoke();
     }
 
     public void SaveData()
