@@ -19,6 +19,7 @@ public class Root : MonoBehaviour
     [SerializeField] private HealthView _healthView;
     [SerializeField] private UIElement _loseScreen;
     [SerializeField] private UIElement _winScreen;
+    [SerializeField] private MoodInfoView _moodInfoView;
 
     private DayData _dayData;
     private Table _table;
@@ -52,6 +53,10 @@ public class Root : MonoBehaviour
         {
             _winScreen.Enable();
             return;
+        }
+        else
+        {
+            _moodInfoView.ShowMoodInfo(_mood);
         }
 
         NewQuestCreator questCreator = new NewQuestCreator(_saveLoadSystem, currentDay);

@@ -513,7 +513,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -835,7 +835,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: b59582c014c16ff409050cf4b1f85f71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -993,9 +993,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63403f1e90a6a7b488031b16becb46ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allSources: []
-  _effectsSources: []
-  _musicSources: []
+  _allSources:
+  - {fileID: 506678924}
+  - {fileID: 215720130}
+  _effectsSources:
+  - {fileID: 215720130}
+  _musicSources:
+  - {fileID: 506678924}
   _masterVolumeSlider: {fileID: 1929532634}
   _effectsVolumeSlider: {fileID: 1929532633}
   _musicVolumeSlider: {fileID: 1929532631}
