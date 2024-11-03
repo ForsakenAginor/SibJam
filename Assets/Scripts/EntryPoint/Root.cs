@@ -19,6 +19,9 @@ public class Root : MonoBehaviour
     [SerializeField] private HealthView _healthView;
     [SerializeField] private UIElement _loseScreen;
     [SerializeField] private UIElement _winScreen;
+    [SerializeField] private MoodInfoView _moodInfoView;
+    [SerializeField] private BugSpriteChanger _bugSpriteChanger;
+    [SerializeField] private DeskSpriteChanger _deskSpriteChanger;
 
     private DayData _dayData;
     private Table _table;
@@ -26,11 +29,6 @@ public class Root : MonoBehaviour
     private QuestAcceptingMonitor _questAcceptingMonitor;
     private SaveLoadSystem _saveLoadSystem;
     private Health _mood;
-
-    //*******************Delete***************
-    [Header("TestOnly")]
-    [SerializeField] private Button _resetButton;
-    //****************************************
 
     private void Start()
     {
@@ -53,6 +51,10 @@ public class Root : MonoBehaviour
             _winScreen.Enable();
             return;
         }
+        else if (currentDay != Days.Monday)
+        {
+            _moodInfoView.ShowMoodInfo(_mood);
+        }
 
         NewQuestCreator questCreator = new NewQuestCreator(_saveLoadSystem, currentDay);
         _questAcceptingMonitor = new(_newQuestInitializer);
@@ -60,12 +62,10 @@ public class Root : MonoBehaviour
         _table = new Table(_saveLoadSystem, _newQuestInitializer, _deskInitializer, currentDay, _eventsConfiguration);
         _desk = new Desk(_saveLoadSystem, _newQuestInitializer, _tableInitializer, currentDay, _eventsConfiguration);
 
+        _bugSpriteChanger.Init(_table);
+        _deskSpriteChanger.Init(_desk);
         _tableInitializer.Init(_table, _eventsConfiguration);
         _deskInitializer.Init(_desk, _eventsConfiguration);
-
-        //*******************Delete***************
-        _resetButton.onClick.AddListener(PlayerPrefs.DeleteAll);
-        //***********************************************
 
         _dayView.Init(currentDay);
 
