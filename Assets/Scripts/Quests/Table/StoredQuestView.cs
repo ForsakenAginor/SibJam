@@ -32,7 +32,7 @@ public class StoredQuestView : MonoBehaviour
         if(daysToExpire <= 0)
             throw new ArgumentOutOfRangeException(nameof(daysToExpire));
 
-        _image.sprite = sprite;
+        //_image.sprite = sprite;
         _header.text = name;
         _description.text = description;
         _daysRemaining.text = daysToExpire.ToString();
