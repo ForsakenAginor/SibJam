@@ -9,6 +9,7 @@ public class ConsequencesRoot : MonoBehaviour
     [SerializeField] private SoundInitializer _soundInitializer;
     [SerializeField] private EventsConfiguration _eventsConfiguration;
     [SerializeField] private ConsequencesCardsShower _consequencesCardsShower;
+    [SerializeField] private GameObject Black_screen;
 
     [SerializeField] private float _duration;
 
@@ -70,6 +71,14 @@ public class ConsequencesRoot : MonoBehaviour
     private void OnAllEventsShown()
     {
         _healthDamageSystem.SaveMood();
+        Black_screen.GetComponent<Black_Screen_start>().Anim();
+        StartCoroutine(waitmethod());
+    }
+
+    public IEnumerator waitmethod()
+    {
+        WaitForSeconds time = new WaitForSeconds(1f);
+        yield return time;
         SceneManager.LoadScene(Scenes.GameScene.ToString());
     }
 }
