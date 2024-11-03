@@ -88,3 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081f5380281e46d4fa34e82802be5b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: 21300000, guid: 7f7fb67654ee13148a0ba4cbe218d74f, type: 3}
+  - {fileID: 21300000, guid: bd6d0538a0b8a1a48b0b54545b189b33, type: 3}
+  - {fileID: 21300000, guid: f19159b7147424a43ad10381cd8cbfd5, type: 3}
+  _image: {fileID: 4638391564769495908}
