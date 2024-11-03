@@ -9,6 +9,7 @@ public class HeroAnimation : MonoBehaviour
     [SerializeField] private float _duration;
     [SerializeField] private float _stepFrequence;
     [SerializeField] private float _stepValue;
+    [SerializeField] private AudioSource _stepsSound;
 
     private void Start()
     {
@@ -30,5 +31,7 @@ public class HeroAnimation : MonoBehaviour
         WaitForSeconds delay = new WaitForSeconds(_duration);
         yield return delay;
         _heroSprite.GetComponent<SpriteRenderer>().flipX = true;
+        yield return delay;
+        _stepsSound.Pause();
     }
 }
