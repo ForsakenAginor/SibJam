@@ -17,8 +17,6 @@ public class Root : MonoBehaviour
     [SerializeField] private DeskInitializer _deskInitializer;
     [SerializeField] private List<InteractablePeasant> _peasants;
     [SerializeField] private HealthView _healthView;
-    [SerializeField] private UIElement _loseScreen;
-    [SerializeField] private UIElement _winScreen;
     [SerializeField] private MoodInfoView _moodInfoView;
     [SerializeField] private BugSpriteChanger _bugSpriteChanger;
     [SerializeField] private DeskSpriteChanger _deskSpriteChanger;
@@ -43,12 +41,12 @@ public class Root : MonoBehaviour
 
         if (_mood == Health.Riot)
         {
-            _loseScreen.Enable();
+            SceneManager.LoadScene(Scenes.LoseScene.ToString());
             return;
         }
         else if (currentDay == Days.Final)
         {
-            _winScreen.Enable();
+            SceneManager.LoadScene(Scenes.WinScene.ToString());
             return;
         }
         else if (currentDay != Days.Monday)

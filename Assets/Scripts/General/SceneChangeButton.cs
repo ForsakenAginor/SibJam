@@ -12,7 +12,6 @@ public class SceneChangeButton : MonoBehaviour
     {
         _button = GetComponent<Button>();
         _button.onClick.AddListener(OnButtonClick);
-
     }
 
     private void OnDestroy()
