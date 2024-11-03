@@ -9,6 +9,7 @@ public class ConsequencesRoot : MonoBehaviour
     [SerializeField] private SoundInitializer _soundInitializer;
     [SerializeField] private EventsConfiguration _eventsConfiguration;
     [SerializeField] private ConsequencesCardsShower _consequencesCardsShower;
+    [SerializeField] private DeskSpriteChanger _deskSpriteChanger;
 
     [SerializeField] private float _duration;
 
@@ -29,6 +30,7 @@ public class ConsequencesRoot : MonoBehaviour
         saveLoadSystem.SaveStoredQuests(quests);
 
         savedQuests = saveLoadSystem.GetPlacedQuests();
+        _deskSpriteChanger.Init(savedQuests.Count);
         RandomQuestPicker questPicker = new RandomQuestPicker();
         Quest chosedQuest = questPicker.ChoseRandomQuest(savedQuests);
         quests.Clear();

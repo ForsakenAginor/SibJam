@@ -18,10 +18,10 @@ public class HealthView : MonoBehaviour
     private void Awake()
     {
         _colors.Add(Health.Rage, new KeyValuePair<Color, string>(_rageColor, "Ярость"));
-        _colors.Add(Health.Hopeless, new KeyValuePair<Color, string>(_hopelessnessColor, "Безразличие"));
+        _colors.Add(Health.Hopeless, new KeyValuePair<Color, string>(_hopelessnessColor, "Гнев"));
         _colors.Add(Health.Fear, new KeyValuePair<Color, string>(_fearColor, "Досада"));
-        _colors.Add(Health.Average, new KeyValuePair<Color, string>(_averageColors, "Гнев"));
-        _colors.Add(Health.Happiness, new KeyValuePair<Color, string>(_hapinessColors, "Ярость"));
+        _colors.Add(Health.Average, new KeyValuePair<Color, string>(_averageColors, "Безразличие"));
+        _colors.Add(Health.Happiness, new KeyValuePair<Color, string>(_hapinessColors, "Счастье"));
         _colors.Add(Health.Riot, new KeyValuePair<Color, string>(_rageColor, "Бунт"));
     }
 

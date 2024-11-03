@@ -9,7 +9,9 @@ public class InteractablePeasant : MonoBehaviour, IPointerDownHandler
     private const string MaterialEnablePropertyName = "_IsEnable";
 
     [SerializeField] private float _animationDuration;
+    [SerializeField] private float _stepFrequence;
     [SerializeField] private Transform _targetPoint;
+    [SerializeField] private float _stepValue;
 
     private SpriteRenderer _spriteRenderer;
     private UIElement _windowThatWillBeOpened;
@@ -34,6 +36,8 @@ public class InteractablePeasant : MonoBehaviour, IPointerDownHandler
         _spriteRenderer.flipX = true;
         Vector3 target = new Vector3(_targetPoint.position.x, transform.position.y, transform.position.z);
         transform.DOMove(target, _animationDuration).SetEase(Ease.Linear);
+        _stepValue += transform.position.y;
+        transform.DOMoveY(_stepValue, _stepFrequence).SetLoops(-1, LoopType.Yoyo);
     }
 
     public void Init(UIElement uIElement)
