@@ -30,11 +30,6 @@ public class Root : MonoBehaviour
     private SaveLoadSystem _saveLoadSystem;
     private Health _mood;
 
-    //*******************Delete***************
-    [Header("TestOnly")]
-    [SerializeField] private Button _resetButton;
-    //****************************************
-
     private void Start()
     {
         _soundInitializer.Init();
@@ -71,10 +66,6 @@ public class Root : MonoBehaviour
         _deskSpriteChanger.Init(_desk);
         _tableInitializer.Init(_table, _eventsConfiguration);
         _deskInitializer.Init(_desk, _eventsConfiguration);
-
-        //*******************Delete***************
-        _resetButton.onClick.AddListener(PlayerPrefs.DeleteAll);
-        //***********************************************
 
         _dayView.Init(currentDay);
 

@@ -13,21 +13,21 @@ public class HealthView : MonoBehaviour
     [SerializeField] private Color _averageColors;
     [SerializeField] private Color _hapinessColors;
 
-    private Dictionary<Health, Color> _colors = new Dictionary<Health, Color>();
+    private Dictionary<Health, KeyValuePair<Color, string>> _colors = new Dictionary<Health, KeyValuePair<Color, string>>();
 
     private void Awake()
     {
-        _colors.Add(Health.Rage, _rageColor);
-        _colors.Add(Health.Hopeless, _hopelessnessColor);
-        _colors.Add(Health.Fear, _fearColor);
-        _colors.Add(Health.Average, _averageColors);
-        _colors.Add(Health.Happiness, _hapinessColors);
-        _colors.Add(Health.Riot, _rageColor);
+        _colors.Add(Health.Rage, new KeyValuePair<Color, string>(_rageColor, "Ярость"));
+        _colors.Add(Health.Hopeless, new KeyValuePair<Color, string>(_hopelessnessColor, "Безразличие"));
+        _colors.Add(Health.Fear, new KeyValuePair<Color, string>(_fearColor, "Досада"));
+        _colors.Add(Health.Average, new KeyValuePair<Color, string>(_averageColors, "Гнев"));
+        _colors.Add(Health.Happiness, new KeyValuePair<Color, string>(_hapinessColors, "Ярость"));
+        _colors.Add(Health.Riot, new KeyValuePair<Color, string>(_rageColor, "Бунт"));
     }
 
     public void Init(Health health)
     {
-        _image.color = _colors[health];
-        _textField.text = health.ToString();
+        _image.color = _colors[health].Key;
+        _textField.text = _colors[health].Value;
     }
 }
