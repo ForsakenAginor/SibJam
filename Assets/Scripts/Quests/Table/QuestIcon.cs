@@ -1,9 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class QuestIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IKey
 {
+    [SerializeField] private List<Sprite> _sprites;
+    [SerializeField] private Image _image;
+
     private UIElement _card;
     private AudioSource _audioSource;
 
@@ -26,6 +31,12 @@ public class QuestIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _card.Disable();
         Destroy(_card.gameObject);
         Destroy(gameObject);
+    }
+
+    private void Awake()
+    {
+        int index = UnityEngine.Random.Range(0, _sprites.Count);
+        _image.sprite = _sprites[index];
     }
 
     public void Init(UIElement card, AudioSource audio, Action<IKey> accept)
