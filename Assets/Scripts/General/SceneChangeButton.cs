@@ -18,9 +18,14 @@ public class SceneChangeButton : MonoBehaviour
     {
         _button.onClick.RemoveListener(OnButtonClick);        
     }
-
-    private void OnButtonClick()
+    public void MainScene()
     {
         SceneManager.LoadScene(_scene.ToString());
     }
+
+    private void OnButtonClick()
+    {
+        Invoke("MainScene", 1f);
+    }
+
 }

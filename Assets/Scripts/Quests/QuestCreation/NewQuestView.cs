@@ -34,7 +34,7 @@ public class NewQuestView : MonoBehaviour
         if (audioSource == null)
             throw new ArgumentNullException(nameof(audioSource));
 
-        _image.sprite = sprite;
+        //_image.sprite = sprite;
         _header.text = name;
         _description.text = description;
         _controller.Init(audioSource, accept, decline);
