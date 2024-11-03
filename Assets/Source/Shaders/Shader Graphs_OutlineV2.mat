@@ -42,9 +42,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _IsEnable: 1
-    - _OutlineWidth: 0.0204
+    - _OutlineWidth: 0.0207
     m_Colors:
-    - _OutlineColor: {r: 13.069383, g: 13.427451, b: 0, a: 1}
+    - _OutlineColor: {r: 11.664729, g: 11.984314, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &50245478130196251
 MonoBehaviour:

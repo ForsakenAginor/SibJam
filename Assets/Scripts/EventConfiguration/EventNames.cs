@@ -24,5 +24,4 @@
     Quest18,
     Quest19,
     Quest20,
-    Quest21
 }
