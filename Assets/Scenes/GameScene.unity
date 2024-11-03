@@ -2045,7 +2045,7 @@ MonoBehaviour:
   - {fileID: 1602567828}
   - {fileID: 438261562}
   - {fileID: 1984597953}
-  _healthView: {fileID: 691537742}
+  _healthView: {fileID: 691537744}
   _loseScreen: {fileID: 770602778}
   _winScreen: {fileID: 1905621375}
   _moodInfoView: {fileID: 691537743}
