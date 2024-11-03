@@ -1639,7 +1639,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationDuration: 3
+  _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
+  _stepValue: 0.2
 --- !u!1 &459126250
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,7 +4189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationDuration: 3
+  _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
+  _stepValue: 0.2
 --- !u!1 &1618768732
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,7 +5357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animationDuration: 3
+  _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
+  _stepValue: 0.2
 --- !u!1 &1989935445
 GameObject:
   m_ObjectHideFlags: 0
