@@ -1,5 +1,8 @@
 ﻿public enum EventNames
 {
+    Quest_ob_1,
+    Quest_ob_2,
+    Quest_ob_3,
     Quest0,
     Quest1,
     Quest2,
@@ -21,4 +24,5 @@
     Quest18,
     Quest19,
     Quest20,
+    Quest21
 }
