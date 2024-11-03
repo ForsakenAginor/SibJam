@@ -39,6 +39,7 @@ public class Table
     }
 
     public event Action<Quest> QuestStored;
+    public event Action QuestRemoved;
 
     public IEnumerable<Quest> Quests => _quests;
 
@@ -48,6 +49,7 @@ public class Table
             throw new InvalidOperationException("Quest don't existing in table");
 
         _quests.Remove(quest);
+        QuestRemoved?.Invoke();
     }
 
     public void SaveData()
