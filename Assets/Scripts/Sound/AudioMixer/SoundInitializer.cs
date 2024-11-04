@@ -62,5 +62,14 @@ namespace Sound
             _masterChanger.AddAudioSource(effect);
             _musicChanger.AddAudioSource(effect);
         }
+
+        public void AddMusicSourceWithoutVolumeChanging(AudioSource effect)
+        {
+            if (effect == null)
+                throw new ArgumentNullException(nameof(effect));
+
+            _masterChanger.AddAudioSourceWithoutVolumeChanging(effect);
+            _musicChanger.AddAudioSourceWithoutVolumeChanging(effect);
+        }
     }
 }
