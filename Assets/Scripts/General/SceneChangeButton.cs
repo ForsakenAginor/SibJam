@@ -25,7 +25,7 @@ public class SceneChangeButton : MonoBehaviour
 
     private void OnButtonClick()
     {
-        Invoke("MainScene", 1f);
+        Invoke("MainScene", 0.5f);
     }
 
 }
