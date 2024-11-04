@@ -43,7 +43,9 @@ public class NewQuestInitializer : MonoBehaviour
                 _toBagSound,
                 QuestPlacedCallback,
                 QuestStoredCallback);
-            view.GetComponent<RectTransform>().offsetMin += new Vector2(step * iterator, -step * iterator);
+            RectTransform rect = view.GetComponent<RectTransform>();
+            rect.offsetMin += new Vector2(step * iterator, -step * iterator);
+            rect.offsetMax += new Vector2(step * iterator, -step * iterator);
             UIElement ui = view.GetUIElement();
             ui.Disable();
             list.Add(ui);
