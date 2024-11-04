@@ -20,6 +20,7 @@ public class Root : MonoBehaviour
     [SerializeField] private MoodInfoView _moodInfoView;
     [SerializeField] private BugSpriteChanger _bugSpriteChanger;
     [SerializeField] private DeskSpriteChanger _deskSpriteChanger;
+    [SerializeField] private UIElement _tutorial;
 
     private DayData _dayData;
     private Table _table;
@@ -31,6 +32,7 @@ public class Root : MonoBehaviour
     private void Start()
     {
         _soundInitializer.Init();
+        _soundInitializer.AddMusicSourceWithoutVolumeChanging(Singleton.Instance.Music);
         _nextDayButton.interactable = false;
         _dayData = new DayData();
         Days currentDay = _dayData.GetCurrentDay();
@@ -38,6 +40,9 @@ public class Root : MonoBehaviour
 
         _mood = _saveLoadSystem.GetMood();
         _healthView.Init(_mood);
+
+        if(currentDay == Days.Monday)
+            _tutorial.Enable();
 
         if (_mood == Health.Riot)
         {
