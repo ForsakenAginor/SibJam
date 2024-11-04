@@ -46,5 +46,16 @@ namespace Sound
             audioSource.volume *= _previousVolumeValue;
             _audioSources.Add(audioSource);
         }
+
+        public void AddAudioSourceWithoutVolumeChanging(AudioSource audioSource)
+        {
+            if (audioSource == null)
+                throw new ArgumentNullException(nameof(audioSource));
+
+            if (_audioSources.Contains(audioSource))
+                throw new Exception(audioSource + Warning);
+
+            _audioSources.Add(audioSource);
+        }
     }
 }

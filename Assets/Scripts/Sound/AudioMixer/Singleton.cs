@@ -2,12 +2,22 @@
 
 public class Singleton : MonoBehaviour
 {
-    [SerializeField] private AudioSource _music;
     private static Singleton _instance;
+    [SerializeField] private AudioSource _music;
+    private bool _isAdded;
 
     public static Singleton Instance { get { return _instance; } }
 
-    public AudioSource Music => _music;
+    public AudioSource Music
+    {
+        get
+        {
+            _isAdded = true;
+            return _music;
+        }
+    }    
+
+    public bool IsAdded => _isAdded;
 
     private void Awake()
     {

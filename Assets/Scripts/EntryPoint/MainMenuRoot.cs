@@ -8,6 +8,10 @@ public class MainMenuRoot : MonoBehaviour
     private void Start()
     {
         _soundInitializer.Init();
-        _soundInitializer.AddMusicSource(Singleton.Instance.Music);
+
+        if (Singleton.Instance.IsAdded == false)
+            _soundInitializer.AddMusicSource(Singleton.Instance.Music);
+        else
+            _soundInitializer.AddMusicSourceWithoutVolumeChanging(Singleton.Instance.Music);
     }
 }

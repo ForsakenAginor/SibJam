@@ -19,7 +19,7 @@ public class ConsequencesRoot : MonoBehaviour
     private void Start()
     {
         _soundInitializer.Init();
-        _soundInitializer.AddMusicSource(Singleton.Instance.Music);
+        _soundInitializer.AddMusicSourceWithoutVolumeChanging(Singleton.Instance.Music);
         DayData dayData = new DayData();
         Days currentDay = dayData.GetCurrentDay();
         SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
