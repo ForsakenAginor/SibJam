@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd17c4c4d909cc44b951509d7d731ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 3
+  _animationDuration: 9
   _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.2
@@ -4382,7 +4382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd17c4c4d909cc44b951509d7d731ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 3
+  _animationDuration: 9
   _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.2
@@ -5146,10 +5146,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 899e93cd84b317d47a0edd1e43667029, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8574ba3057b93f446a9054db90516149, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -5414,7 +5414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd17c4c4d909cc44b951509d7d731ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 3
+  _animationDuration: 9
   _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.2
@@ -5550,7 +5550,7 @@ Transform:
   m_GameObject: {fileID: 2112555158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.08, y: -3.63, z: 0}
+  m_LocalPosition: {x: -15.29, y: -3.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
