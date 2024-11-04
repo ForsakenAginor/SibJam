@@ -2400,7 +2400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _newQuestViewPrefab: {fileID: 2093308875015508062, guid: 6db1c1f91f794aa4a901cb17265c20d1, type: 3}
   _holder: {fileID: 648115052}
-  _image: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+  _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
   _toDeskSound: {fileID: 1276819547}
   _toBagSound: {fileID: 1194225589}
 --- !u!114 &691537740
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   _questIconPrefab: {fileID: 4346821370458636560, guid: 61590ea7f29f1734793c98df2a0031f9, type: 3}
   _questViewHolder: {fileID: 648115052}
   _iconHolder: {fileID: 404555660}
-  _image: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
+  _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
   _buttonClickSource: {fileID: 1276819547}
 --- !u!114 &691537741
 MonoBehaviour:
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   _questIconPrefab: {fileID: 4346821370458636560, guid: 61590ea7f29f1734793c98df2a0031f9, type: 3}
   _questViewHolder: {fileID: 648115052}
   _iconHolder: {fileID: 37746901}
-  _image: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
+  _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
   _buttonClickSource: {fileID: 1194225589}
 --- !u!114 &691537743
 MonoBehaviour:
