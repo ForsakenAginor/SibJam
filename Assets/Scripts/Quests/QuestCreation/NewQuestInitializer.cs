@@ -28,6 +28,8 @@ public class NewQuestInitializer : MonoBehaviour
             throw new ArgumentNullException(nameof(newQuests));
 
         List<UIElement> list = new List<UIElement>();
+        int iterator = 0;
+        float step = 40;
 
         foreach(var newQuest in newQuests)
         {
@@ -41,9 +43,11 @@ public class NewQuestInitializer : MonoBehaviour
                 _toBagSound,
                 QuestPlacedCallback,
                 QuestStoredCallback);
+            view.GetComponent<RectTransform>().offsetMin += new Vector2(step * iterator, -step * iterator);
             UIElement ui = view.GetUIElement();
             ui.Disable();
             list.Add(ui);
+            iterator++;
         }
 
         if (peasants.Count != list.Count)
