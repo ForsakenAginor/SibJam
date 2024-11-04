@@ -1973,8 +1973,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4281017416
+  m_fontColor: {r: 0.28235295, g: 0.14117648, b: 0.16862746, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2467,11 +2467,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textField: {fileID: 459126252}
   _image: {fileID: 1844553075}
-  _rageColor: {r: 0.6509434, g: 0.076762185, b: 0.076762185, a: 1}
-  _hopelessnessColor: {r: 0.745283, g: 0.43294162, b: 0.010546438, a: 1}
-  _fearColor: {r: 0.8962264, g: 0.830754, b: 0.012682426, a: 1}
-  _averageColors: {r: 0.26308778, g: 0.7372549, b: 0, a: 1}
-  _hapinessColors: {r: 0.09411764, g: 0.8, b: 0.43635237, a: 1}
+  _rageColor: {r: 0.63529414, g: 0.23921569, b: 0.25882354, a: 1}
+  _hopelessnessColor: {r: 0.7137255, g: 0.34509805, b: 0.32941177, a: 1}
+  _fearColor: {r: 0.5294118, g: 0.75686276, b: 0.74509805, a: 1}
+  _averageColors: {r: 0.2, g: 0.5921569, b: 0.62352943, a: 1}
+  _hapinessColors: {r: 0.26666668, g: 0.5921569, b: 0.52156866, a: 1}
 --- !u!1 &692540798
 GameObject:
   m_ObjectHideFlags: 0
