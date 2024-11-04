@@ -9,7 +9,8 @@ public class NewQuestInitializer : MonoBehaviour
     [SerializeField] private NewQuestView _newQuestViewPrefab;
     [SerializeField] private Transform _holder;
     [SerializeField] private Sprite _image;
-    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioSource _toDeskSound;
+    [SerializeField] private AudioSource _toBagSound;
 
     private IEventsInfoGetter _eventsInfoGetter;
 
@@ -36,7 +37,8 @@ public class NewQuestInitializer : MonoBehaviour
             view.Init(_image,
                 _eventsInfoGetter.GetName(newQuest.EventName),
                 _eventsInfoGetter.GetDescription(newQuest.EventName),
-                _audioSource,
+                _toDeskSound,
+                _toBagSound,
                 QuestPlacedCallback,
                 QuestStoredCallback);
             UIElement ui = view.GetUIElement();

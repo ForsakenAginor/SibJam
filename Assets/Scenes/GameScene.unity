@@ -2396,7 +2396,8 @@ MonoBehaviour:
   _newQuestViewPrefab: {fileID: 2093308875015508062, guid: 6db1c1f91f794aa4a901cb17265c20d1, type: 3}
   _holder: {fileID: 648115052}
   _image: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
-  _audioSource: {fileID: 1934630178}
+  _toDeskSound: {fileID: 1276819547}
+  _toBagSound: {fileID: 1194225589}
 --- !u!114 &691537740
 MonoBehaviour:
   m_ObjectHideFlags: 0
