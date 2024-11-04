@@ -7,7 +7,8 @@ public class NewQuestController : MonoBehaviour, IKey
     [SerializeField] private Button _toBoardButton;
     [SerializeField] private Button _toTableButton;
 
-    private AudioSource _audioSource;
+    private AudioSource _toDeskSound;
+    private AudioSource _toBagSound;
 
     private Action<IKey> Accept;
     private Action<IKey> Decline;
@@ -18,9 +19,10 @@ public class NewQuestController : MonoBehaviour, IKey
         _toTableButton.onClick.RemoveListener(OnToTableButtonClick);
     }
 
-    public void Init(AudioSource audioSource, Action<IKey> accept, Action<IKey> decline)
+    public void Init(AudioSource toDeskSound, AudioSource toBagSound, Action<IKey> accept, Action<IKey> decline)
     {
-        _audioSource = audioSource != null ? audioSource : throw new ArgumentNullException(nameof(audioSource));
+        _toDeskSound = toDeskSound != null ? toDeskSound : throw new ArgumentNullException(nameof(toDeskSound));
+        _toBagSound = toBagSound != null ? toBagSound : throw new ArgumentNullException(nameof(toBagSound));
         Accept = accept;
         Decline = decline;
         _toBoardButton.onClick.AddListener(OnToBoardButtonClick);
@@ -29,14 +31,14 @@ public class NewQuestController : MonoBehaviour, IKey
 
     private void OnToTableButtonClick()
     {
-        _audioSource.Play();
+        _toBagSound.Play();
         Decline?.Invoke(this);
         gameObject.SetActive(false);
     }
 
     private void OnToBoardButtonClick()
     {
-        _audioSource.Play();
+        _toDeskSound.Play();
         Accept?.Invoke(this);
         gameObject.SetActive(false);
     }

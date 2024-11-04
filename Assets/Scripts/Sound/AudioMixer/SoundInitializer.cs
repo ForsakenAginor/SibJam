@@ -53,5 +53,14 @@ namespace Sound
             _masterChanger.AddAudioSource(effect);
             _effectsChanger.AddAudioSource(effect);
         }
+
+        public void AddMusicSource(AudioSource effect)
+        {
+            if (effect == null)
+                throw new ArgumentNullException(nameof(effect));
+
+            _masterChanger.AddAudioSource(effect);
+            _musicChanger.AddAudioSource(effect);
+        }
     }
 }

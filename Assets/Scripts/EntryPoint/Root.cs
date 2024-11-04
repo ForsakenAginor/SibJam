@@ -32,6 +32,7 @@ public class Root : MonoBehaviour
     private void Start()
     {
         _soundInitializer.Init();
+        _soundInitializer.AddMusicSource(Singleton.Instance.Music);
         _nextDayButton.interactable = false;
         _dayData = new DayData();
         Days currentDay = _dayData.GetCurrentDay();
