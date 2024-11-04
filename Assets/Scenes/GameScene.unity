@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.28235295, g: 0.14117648, b: 0.16862746, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd17c4c4d909cc44b951509d7d731ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 3
+  _animationDuration: 9
   _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.2
@@ -1973,8 +1973,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4281017416
+  m_fontColor: {r: 0.28235295, g: 0.14117648, b: 0.16862746, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2400,7 +2400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _newQuestViewPrefab: {fileID: 2093308875015508062, guid: 6db1c1f91f794aa4a901cb17265c20d1, type: 3}
   _holder: {fileID: 648115052}
-  _image: {fileID: 21300000, guid: 36a282b52c2a9df47a448ee50bf32328, type: 3}
+  _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
   _toDeskSound: {fileID: 1276819547}
   _toBagSound: {fileID: 1194225589}
 --- !u!114 &691537740
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   _questIconPrefab: {fileID: 4346821370458636560, guid: 61590ea7f29f1734793c98df2a0031f9, type: 3}
   _questViewHolder: {fileID: 648115052}
   _iconHolder: {fileID: 404555660}
-  _image: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
+  _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
   _buttonClickSource: {fileID: 1276819547}
 --- !u!114 &691537741
 MonoBehaviour:
@@ -2437,7 +2437,7 @@ MonoBehaviour:
   _questIconPrefab: {fileID: 4346821370458636560, guid: 61590ea7f29f1734793c98df2a0031f9, type: 3}
   _questViewHolder: {fileID: 648115052}
   _iconHolder: {fileID: 37746901}
-  _image: {fileID: 21300000, guid: 2000cb22f7994d045bde353d26117ebd, type: 3}
+  _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
   _buttonClickSource: {fileID: 1194225589}
 --- !u!114 &691537743
 MonoBehaviour:
@@ -2467,11 +2467,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textField: {fileID: 459126252}
   _image: {fileID: 1844553075}
-  _rageColor: {r: 0.6509434, g: 0.076762185, b: 0.076762185, a: 1}
-  _hopelessnessColor: {r: 0.745283, g: 0.43294162, b: 0.010546438, a: 1}
-  _fearColor: {r: 0.8962264, g: 0.830754, b: 0.012682426, a: 1}
-  _averageColors: {r: 0.26308778, g: 0.7372549, b: 0, a: 1}
-  _hapinessColors: {r: 0.09411764, g: 0.8, b: 0.43635237, a: 1}
+  _rageColor: {r: 0.63529414, g: 0.23921569, b: 0.25882354, a: 1}
+  _hopelessnessColor: {r: 0.7137255, g: 0.34509805, b: 0.32941177, a: 1}
+  _fearColor: {r: 0.5294118, g: 0.75686276, b: 0.74509805, a: 1}
+  _averageColors: {r: 0.2, g: 0.5921569, b: 0.62352943, a: 1}
+  _hapinessColors: {r: 0.26666668, g: 0.5921569, b: 0.52156866, a: 1}
 --- !u!1 &692540798
 GameObject:
   m_ObjectHideFlags: 0
@@ -4382,7 +4382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd17c4c4d909cc44b951509d7d731ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 3
+  _animationDuration: 9
   _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.2
@@ -5052,7 +5052,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_fontColor: {r: 0.28235295, g: 0.14117648, b: 0.16862746, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5146,10 +5146,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 899e93cd84b317d47a0edd1e43667029, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8574ba3057b93f446a9054db90516149, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 1.5
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -5414,7 +5414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cd17c4c4d909cc44b951509d7d731ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animationDuration: 3
+  _animationDuration: 9
   _stepFrequence: 0.7
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.2
@@ -5550,7 +5550,7 @@ Transform:
   m_GameObject: {fileID: 2112555158}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.08, y: -3.63, z: 0}
+  m_LocalPosition: {x: -15.29, y: -3.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
