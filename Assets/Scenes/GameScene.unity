@@ -122,6 +122,55 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &21142211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 21142213}
+  - component: {fileID: 21142212}
+  m_Layer: 0
+  m_Name: Bag
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &21142212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21142211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322760e1f53d0854182afc03debfe6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _storedQuestViewPrefab: {fileID: 5915669012222554611, guid: 3843fc6c09bdee946b1b8fe00378cf35, type: 3}
+  _questIconPrefab: {fileID: 4346821370458636560, guid: 61590ea7f29f1734793c98df2a0031f9, type: 3}
+  _questViewHolder: {fileID: 648115052}
+  _iconHolder: {fileID: 404555660}
+  _buttonClickSource: {fileID: 1934630178}
+--- !u!4 &21142213
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21142211}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 691537738}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &37746900
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,6 +2089,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459126250}
   m_CullTransparentMesh: 1
+--- !u!1 &476748306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 476748308}
+  - component: {fileID: 476748307}
+  m_Layer: 0
+  m_Name: Desk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &476748307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476748306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322760e1f53d0854182afc03debfe6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _storedQuestViewPrefab: {fileID: 5915669012222554611, guid: 3843fc6c09bdee946b1b8fe00378cf35, type: 3}
+  _questIconPrefab: {fileID: 4346821370458636560, guid: 61590ea7f29f1734793c98df2a0031f9, type: 3}
+  _questViewHolder: {fileID: 648115052}
+  _iconHolder: {fileID: 37746901}
+  _buttonClickSource: {fileID: 1934630178}
+--- !u!4 &476748308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476748306}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 691537738}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492212206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,8 +2414,6 @@ GameObject:
   - component: {fileID: 691537737}
   - component: {fileID: 691537736}
   - component: {fileID: 691537739}
-  - component: {fileID: 691537740}
-  - component: {fileID: 691537741}
   - component: {fileID: 691537743}
   - component: {fileID: 691537744}
   m_Layer: 0
@@ -2359,8 +2455,8 @@ MonoBehaviour:
   _dayView: {fileID: 691537736}
   _nextDayButton: {fileID: 788541808}
   _newQuestInitializer: {fileID: 691537739}
-  _tableInitializer: {fileID: 691537740}
-  _deskInitializer: {fileID: 691537741}
+  _bagViewCreator: {fileID: 21142212}
+  _deskViewCreator: {fileID: 476748307}
   _peasants:
   - {fileID: 1602567828}
   - {fileID: 438261562}
@@ -2382,7 +2478,9 @@ Transform:
   m_LocalPosition: {x: 815.0852, y: 657.6967, z: -5.1881084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 476748308}
+  - {fileID: 21142213}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &691537739
@@ -2402,42 +2500,6 @@ MonoBehaviour:
   _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
   _toDeskSound: {fileID: 1276819547}
   _toBagSound: {fileID: 1194225589}
---- !u!114 &691537740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691537735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7970c919c1fa8cc4f8256f3b043cad76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _storedQuestViewPrefab: {fileID: 5915669012222554611, guid: 3843fc6c09bdee946b1b8fe00378cf35, type: 3}
-  _questIconPrefab: {fileID: 4346821370458636560, guid: 61590ea7f29f1734793c98df2a0031f9, type: 3}
-  _questViewHolder: {fileID: 648115052}
-  _iconHolder: {fileID: 404555660}
-  _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
-  _buttonClickSource: {fileID: 1276819547}
---- !u!114 &691537741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691537735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7fafde9f37c24c42b2755c7bc7090ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _storedQuestViewPrefab: {fileID: 5915669012222554611, guid: 3843fc6c09bdee946b1b8fe00378cf35, type: 3}
-  _questIconPrefab: {fileID: 4346821370458636560, guid: 61590ea7f29f1734793c98df2a0031f9, type: 3}
-  _questViewHolder: {fileID: 648115052}
-  _iconHolder: {fileID: 37746901}
-  _image: {fileID: 21300000, guid: b2f786b0028776249a92534d582b3a67, type: 3}
-  _buttonClickSource: {fileID: 1194225589}
 --- !u!114 &691537743
 MonoBehaviour:
   m_ObjectHideFlags: 0

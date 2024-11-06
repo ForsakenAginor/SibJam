@@ -5,7 +5,7 @@ public class QuestStorage
 {
     private readonly List<Quest> _quests = new List<Quest>();
     private readonly IEventsLifeTimeInfoGetter _eventsInfoGetter;
-    private readonly IQuestSorter _newQuestInitializer;
+    private readonly IQuestSorter _questGiver;
     private readonly IQuestsStorageInitializer _anotherStorage;
     private readonly Days _currentDay;
 
@@ -18,7 +18,7 @@ public class QuestStorage
             configuration :
             throw new ArgumentNullException(nameof(configuration));
         
-        _newQuestInitializer = questGiver != null ?
+        _questGiver = questGiver != null ?
             questGiver :
             throw new ArgumentNullException(nameof(questGiver));
         _anotherStorage = table != null ?
@@ -31,14 +31,20 @@ public class QuestStorage
         _currentDay = current;
         CreateQuestList(loadData);
 
-        _newQuestInitializer.QuestStored += OnQuestStored;
+        _questGiver.QuestStored += OnQuestStored;
         _anotherStorage.QuestTransfered += OnQuestStored;
+    }
+
+    ~ QuestStorage()
+    {
+        _questGiver.QuestStored -= OnQuestStored;
+        _anotherStorage.QuestTransfered -= OnQuestStored;
     }
 
     public event Action<Quest> NewQuestTaken;
     public event Action QuestRemoved;
 
-    private Action<List<SerializableQuest>> Save;
+    private readonly Action<List<SerializableQuest>> Save;
 
     public IEnumerable<Quest> Quests => _quests;
 

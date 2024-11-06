@@ -13,8 +13,8 @@ public class Root : MonoBehaviour
     [SerializeField] private DayView _dayView;
     [SerializeField] private Button _nextDayButton;
     [SerializeField] private NewQuestInitializer _newQuestInitializer;
-    [SerializeField] private TableInitializer _tableInitializer;
-    [SerializeField] private DeskInitializer _deskInitializer;
+    [SerializeField] private StorageViewCreator _bagViewCreator;
+    [SerializeField] private StorageViewCreator _deskViewCreator;
     [SerializeField] private List<InteractablePeasant> _peasants;
     [SerializeField] private HealthView _healthView;
     [SerializeField] private MoodInfoView _moodInfoView;
@@ -65,15 +65,15 @@ public class Root : MonoBehaviour
         BagAdapter bagAdapter = new BagAdapter(_newQuestInitializer);
         DeskAdapter deskAdapter = new DeskAdapter(_newQuestInitializer);
 
-        _table = new QuestStorage(bagAdapter, _deskInitializer, currentDay, _eventsConfiguration,
+        _table = new QuestStorage(bagAdapter, _deskViewCreator, currentDay, _eventsConfiguration,
             _saveLoadSystem.GetStoredQuests(), _saveLoadSystem.SaveStoredQuests);
-        _desk = new QuestStorage(deskAdapter, _tableInitializer, currentDay, _eventsConfiguration,
+        _desk = new QuestStorage(deskAdapter, _bagViewCreator, currentDay, _eventsConfiguration,
             _saveLoadSystem.GetPlacedQuests(), _saveLoadSystem.SavePlacedQuests);
 
         _bugSpriteChanger.Init(_table);
         _deskSpriteChanger.Init(_desk);
-        _tableInitializer.Init(_table, _eventsConfiguration);
-        _deskInitializer.Init(_desk, _eventsConfiguration);
+        _bagViewCreator.Init(_table, _eventsConfiguration);
+        _deskViewCreator.Init(_desk, _eventsConfiguration);
 
         _dayView.Init(currentDay);
 

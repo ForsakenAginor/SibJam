@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableInitializer : MonoBehaviour, IQuestsStorageInitializer
+public class StorageViewCreator : MonoBehaviour, IQuestsStorageInitializer
 {
     private readonly Dictionary<IKey, Quest> _quests = new Dictionary<IKey, Quest>();
 
@@ -10,7 +10,6 @@ public class TableInitializer : MonoBehaviour, IQuestsStorageInitializer
     [SerializeField] private QuestIcon _questIconPrefab;
     [SerializeField] private Transform _questViewHolder;
     [SerializeField] private Transform _iconHolder;
-    [SerializeField] private Sprite _image;
     [SerializeField] private AudioSource _buttonClickSource;
 
     private IEventsInfoGetter _eventsInfoGetter;
@@ -44,8 +43,7 @@ public class TableInitializer : MonoBehaviour, IQuestsStorageInitializer
         var view = Instantiate(_storedQuestViewPrefab, _questViewHolder);
         var icon = Instantiate(_questIconPrefab, _iconHolder);
         _quests.Add(icon, quest);
-        view.Init(_image,
-            _eventsInfoGetter.GetName(quest.EventName),
+        view.Init(_eventsInfoGetter.GetName(quest.EventName),
             _eventsInfoGetter.GetDescription(quest.EventName),
             quest.DaysToExpire);
         view.GetUIElement().Disable();
@@ -57,9 +55,4 @@ public class TableInitializer : MonoBehaviour, IQuestsStorageInitializer
         _bag.RemoveQuest(_quests[key]);
         QuestTransfered?.Invoke(_quests[key]);
     }
-}
-
-public interface IQuestsStorageInitializer
-{
-    public event Action<Quest> QuestTransfered;
 }
