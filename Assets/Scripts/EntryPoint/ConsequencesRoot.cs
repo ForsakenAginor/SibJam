@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Quests;
+using Assets.Scripts.SaveSystem;
 using Sound;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,9 +22,9 @@ public class ConsequencesRoot : MonoBehaviour
     {
         _soundInitializer.Init();
         _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
-        DayData dayData = new DayData();
-        Days currentDay = dayData.GetCurrentDay();
-        SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);
+
+        SaveLoadSystem saveLoadSystem = new ();
+        Days currentDay = saveLoadSystem.GetCurrentDay();
 
         List<Quest> expiredQuests = new List<Quest>();
         List<SerializableQuest> quests = new List<SerializableQuest>();
@@ -78,6 +79,7 @@ public class ConsequencesRoot : MonoBehaviour
         Black_screen.Anim();
         StartCoroutine(waitmethod());
     }
+
     public IEnumerator waitmethod()
     {
         WaitForSeconds time = new WaitForSeconds(1f);
@@ -86,10 +88,3 @@ public class ConsequencesRoot : MonoBehaviour
     }
 
 }
-// StartCoroutine(waitmethod());
-//public IEnumerator waitmethod()
-//{
-//    WaitForSeconds time = new WaitForSeconds(1f);
-//    yield return time;
-//    SceneManager.LoadScene(Scenes.GameScene.ToString());
-//}

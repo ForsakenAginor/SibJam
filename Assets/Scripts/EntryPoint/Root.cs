@@ -3,8 +3,8 @@ using Assets.Scripts.Quests.QuestCreation;
 using Assets.Scripts.Quests.QuestCreation.View;
 using Assets.Scripts.Quests.Storage;
 using Assets.Scripts.Quests.Storage.View;
+using Assets.Scripts.SaveSystem;
 using Sound;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,7 +27,6 @@ public class Root : MonoBehaviour
     [SerializeField] private DeskSpriteChanger _deskSpriteChanger;
     [SerializeField] private UIElement _tutorial;
 
-    private DayData _dayData;
     private QuestStorage _table;
     private QuestStorage _desk;
     private QuestAcceptingMonitor _questAcceptingMonitor;
@@ -39,11 +38,11 @@ public class Root : MonoBehaviour
         _soundInitializer.Init();
         _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
         _nextDayButton.interactable = false;
-        _dayData = new DayData();
-        Days currentDay = _dayData.GetCurrentDay();
-        _saveLoadSystem = new SaveLoadSystem(currentDay);
 
+        _saveLoadSystem = new SaveLoadSystem();
+        Days currentDay = _saveLoadSystem.GetCurrentDay();
         _mood = _saveLoadSystem.GetMood();
+
         _healthView.Init(_mood);
 
         if(currentDay == Days.Monday)
@@ -65,7 +64,7 @@ public class Root : MonoBehaviour
         }
 
         NewQuestCreator questCreator = new NewQuestCreator(_saveLoadSystem, currentDay);
-        _questAcceptingMonitor = new(_newQuestInitializer);
+        _questAcceptingMonitor = new (_newQuestInitializer);
         _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration, _peasants);
         BagAdapter bagAdapter = new BagAdapter(_newQuestInitializer);
         DeskAdapter deskAdapter = new DeskAdapter(_newQuestInitializer);
@@ -95,7 +94,7 @@ public class Root : MonoBehaviour
 
     private void OnNextDayButtonClick()
     {
-        _dayData.SaveDay();
+        _saveLoadSystem.SaveDay();
         _table.SaveData();
         _desk.SaveData();
         _saveLoadSystem.SaveMood(_mood);

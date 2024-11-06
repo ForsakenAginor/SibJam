@@ -1,4 +1,6 @@
-﻿namespace Assets.Scripts.Quests
+﻿using Assets.Scripts.SaveSystem;
+
+namespace Assets.Scripts.Quests
 {
     public class Quest
     {
