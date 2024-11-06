@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class BugSpriteChanger : MonoBehaviour
+public class BagSpriteChanger : MonoBehaviour
 {
     [SerializeField] private Sprite _openEmptySprite;
     [SerializeField] private Sprite _openFullSprite;

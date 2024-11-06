@@ -28,7 +28,8 @@ namespace Assets.Scripts.Quests.Storage.View
 
         private void OnDestroy()
         {
-            _bag.NewQuestTaken -= OnQuestStored;
+            if (_bag != null)
+                _bag.NewQuestTaken -= OnQuestStored;
         }
 
         public void Init(QuestStorage bag, IEventsInfoGetter configuration)

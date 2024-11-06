@@ -1,4 +1,4 @@
-namespace Assets.Scripts.Health
+namespace Assets.Scripts.Mood
 {
     public enum Health
     {

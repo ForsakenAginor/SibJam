@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Health
+namespace Assets.Scripts.Mood
 {
     public class HealthView : MonoBehaviour
     {

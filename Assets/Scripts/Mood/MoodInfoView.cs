@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Assets.Scripts.Health
+namespace Assets.Scripts.Mood
 {
     public class MoodInfoView : MonoBehaviour
     {
