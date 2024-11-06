@@ -1,3 +1,8 @@
+using Assets.Scripts.Quests;
+using Assets.Scripts.Quests.QuestCreation;
+using Assets.Scripts.Quests.QuestCreation.View;
+using Assets.Scripts.Quests.Storage;
+using Assets.Scripts.Quests.Storage.View;
 using Sound;
 using System;
 using System.Collections.Generic;
@@ -32,7 +37,7 @@ public class Root : MonoBehaviour
     private void Start()
     {
         _soundInitializer.Init();
-        _soundInitializer.AddMusicSourceWithoutVolumeChanging(Singleton.Instance.Music);
+        _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
         _nextDayButton.interactable = false;
         _dayData = new DayData();
         Days currentDay = _dayData.GetCurrentDay();

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Assets.Scripts.Quests;
 
 public class ConsequencesCardsShower : MonoBehaviour
 {

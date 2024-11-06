@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Quests;
+using System;
 
 public class HealthDamageSystem
 {

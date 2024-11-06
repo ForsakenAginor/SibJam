@@ -1,4 +1,5 @@
-﻿using Sound;
+﻿using Assets.Scripts.Quests;
+using Sound;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class ConsequencesRoot : MonoBehaviour
     private void Start()
     {
         _soundInitializer.Init();
-        _soundInitializer.AddMusicSourceWithoutVolumeChanging(Singleton.Instance.Music);
+        _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
         DayData dayData = new DayData();
         Days currentDay = dayData.GetCurrentDay();
         SaveLoadSystem saveLoadSystem = new SaveLoadSystem(currentDay);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Quests;
+using System;
 using System.Collections.Generic;
 
 public class RandomQuestPicker

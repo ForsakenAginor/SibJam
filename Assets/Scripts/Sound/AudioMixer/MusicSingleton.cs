@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-public class Singleton : MonoBehaviour
+public class MusicSingleton : MonoBehaviour
 {
-    private static Singleton _instance;
+    private static MusicSingleton _instance;
     [SerializeField] private AudioSource _music;
     private bool _isAdded;
 
-    public static Singleton Instance { get { return _instance; } }
+    public static MusicSingleton Instance { get { return _instance; } }
 
     public AudioSource Music
     {
