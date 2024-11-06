@@ -79,7 +79,7 @@ public class ConsequencesRoot : MonoBehaviour
     }
     public IEnumerator waitmethod()
     {
-        WaitForSeconds time = new WaitForSeconds(2f);
+        WaitForSeconds time = new WaitForSeconds(1f);
         yield return time;
         SceneManager.LoadScene(Scenes.GameScene.ToString());
     }

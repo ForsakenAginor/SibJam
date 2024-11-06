@@ -30,14 +30,14 @@ MonoBehaviour:
         \u0432 \u0431\u043E\u043B\u043E\u0442\u0435!"
       _isImportant: 1
       _deadline: 1
-      _failSprite: {fileID: 21300000, guid: 5c384be24605daa438841a2d02052a8f, type: 3}
-      _completeSprite: {fileID: 21300000, guid: d318b63851ecb2846b7fafdbc2591069, type: 3}
+      _failSprite: {fileID: 21300000, guid: 7e6df46263aa44743b739cbe50da343c, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 6fc997b221fd9b34581b5bd2c2ffcf20, type: 3}
   - Key: 1
     Value:
       _name: "\u0418\u0441\u043F\u044B\u0442\u0430\u043D\u0438\u044F"
       _description: "\u0422\u0440\u0435\u0431\u0443\u0435\u0442\u0441\u044F \u043C\u0430\u0433
         \u0434\u043B\u044F \u0438\u0437\u0443\u0447\u0435\u043D\u0438\u044F \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438
-        \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F \u0432\u0437\u0430\u043C\u0430\u0445\u0430
+        \u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F \u0432\u0437\u043C\u0430\u0445\u0430
         \u043B\u043E\u0436\u043A\u0438 \u0432\u043E \u0432\u0440\u0435\u043C\u044F
         \u0435\u0434\u044B"
       _failDescription: "\u0416\u0438\u0442\u0435\u043B\u044C \u0442\u0430\u043A
@@ -50,8 +50,8 @@ MonoBehaviour:
         \u0413\u0435\u0440\u043E\u044E \u043D\u0430 \u044D\u0442\u043E \u0432\u0440\u0435\u043C\u044F?!"
       _isImportant: 0
       _deadline: 1
-      _failSprite: {fileID: 21300000, guid: b016fae76aad76543915bdb1f31e2ff5, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 4536d4bbd5c22434fb0c3453e559aae8, type: 3}
+      _failSprite: {fileID: 21300000, guid: f30a1c85a97d1144c9f83c72ecd82720, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 188b9d9c9029b7545b8bbb36bf110430, type: 3}
   - Key: 2
     Value:
       _name: "\u041A\u043E\u0442 \u0431\u0435\u0437 \u0441\u0430\u043F\u043E\u0433"
@@ -80,7 +80,7 @@ MonoBehaviour:
       _isImportant: 0
       _deadline: 1
       _failSprite: {fileID: 21300000, guid: 07cb70f81f2af8943bb0483321bff12c, type: 3}
-      _completeSprite: {fileID: 21300000, guid: ce23b6edb4d0e234cb9d69dec82d6b5a, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 1e6bf843532425341829c36393315a65, type: 3}
   - Key: 3
     Value:
       _name: "\u041A\u043E\u043B\u044C\u0446\u043E"
@@ -104,8 +104,8 @@ MonoBehaviour:
         \u0413\u0435\u0440\u043E\u0439 \u0432 \u0448\u043E\u043A\u0435!"
       _isImportant: 0
       _deadline: 2
-      _failSprite: {fileID: 21300000, guid: ec6d68e32a0230146a1981eb736fe823, type: 3}
-      _completeSprite: {fileID: 21300000, guid: 922606d1fad563c418b8da804ac34ff0, type: 3}
+      _failSprite: {fileID: 21300000, guid: 213e2ce0fc368a54eb94b86ee48f9675, type: 3}
+      _completeSprite: {fileID: 21300000, guid: 1c0838fad8eacc34eb92306901b1f3fc, type: 3}
   - Key: 4
     Value:
       _name: "\u041D\u043E\u0442\u044B \u0432\u043E\u0437\u0432\u0440\u0430\u0449\u0435\u043D\u0438\u044F"
@@ -125,7 +125,7 @@ MonoBehaviour:
         \u043F\u043E\u043C\u043E\u0449\u0438... \u0416\u0438\u0442\u0435\u043B\u0438
         \u0434\u0435\u0440\u0435\u0432\u043D\u0438 \u043E\u0447\u0435\u043D\u044C
         \u043E\u043F\u0435\u0447\u0430\u043B\u0435\u043D\u044B"
-      _completeDescription: " \u0413\u0435\u0440\u043E\u0439 \u043D\u0430\u0445\u043E\u0434\u0438\u0442
+      _completeDescription: "\u0413\u0435\u0440\u043E\u0439 \u043D\u0430\u0445\u043E\u0434\u0438\u0442
         \u043D\u043E\u0442\u044B, \u043E\u0434\u0438\u043D\u043E\u043A\u0438\u0439
         \u0441\u0442\u0430\u0440\u0438\u043A \u043D\u0430\u0447\u0438\u043D\u0430\u0435\u0442
         \u0438\u0433\u0440\u0430\u0442\u044C \u043F\u043E \u043D\u043E\u0442\u0430\u043C
@@ -370,7 +370,7 @@ MonoBehaviour:
   - Key: 12
     Value:
       _name: "\u0413\u043E\u0440\u043E\u0434 \u0432 \u0446\u0435\u043F\u044F\u0445"
-      _description: "\u0449\u0435\u043C \u0433\u0435\u0440\u043E\u044F \u0434\u043B\u044F
+      _description: "\u0418\u0449\u0435\u043C \u0433\u0435\u0440\u043E\u044F \u0434\u043B\u044F
         \u043F\u0443\u0442\u0435\u0448\u0435\u0441\u0442\u0432\u0438\u044F \u0432
         \u0437\u0430\u0433\u0430\u0434\u043E\u0447\u043D\u0443\u044E \u0426\u0438\u0442\u0430\u0434\u0435\u043B\u044C,
         \u0433\u0434\u0435 \u043D\u0430\u0445\u043E\u0434\u044F\u0442\u0441\u044F
@@ -521,8 +521,8 @@ MonoBehaviour:
         \u0448\u0443\u0442\u043E\u043C"
       _isImportant: 0
       _deadline: 3
-      _failSprite: {fileID: 21300000, guid: 922606d1fad563c418b8da804ac34ff0, type: 3}
-      _completeSprite: {fileID: 21300000, guid: bf0489513a517294483e4d99542d0af3, type: 3}
+      _failSprite: {fileID: 21300000, guid: ad592e736e94eaf44a7e4c1cd1a38b3f, type: 3}
+      _completeSprite: {fileID: 21300000, guid: e083ea17639d6fc4a831ad17da9cc278, type: 3}
   - Key: 17
     Value:
       _name: "\u041C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0435 \u0447\u0435\u043B\u043E\u0432\u0435\u0447\u043A\u0438"
@@ -556,7 +556,7 @@ MonoBehaviour:
         \u0437\u0430\u0449\u0438\u0442\u043D\u0438\u043A\u043E\u043C \u043C\u0430\u043B\u044B\u0448\u0435\u0439\""
       _isImportant: 0
       _deadline: 2
-      _failSprite: {fileID: 21300000, guid: 682768564326f1b40b5cd878bdcf4b73, type: 3}
+      _failSprite: {fileID: 21300000, guid: 67bc83a68e6211a4da606875984a3e78, type: 3}
       _completeSprite: {fileID: 21300000, guid: 682768564326f1b40b5cd878bdcf4b73, type: 3}
   - Key: 18
     Value:
