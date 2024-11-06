@@ -12,7 +12,7 @@ public class BugSpriteChanger : MonoBehaviour
     [SerializeField] private InteractableSprite _interactableSprite;
 
     private SpriteRenderer _renderer;
-    private Table _table;
+    private QuestStorage _bag;
 
     private void Awake()
     {
@@ -25,11 +25,11 @@ public class BugSpriteChanger : MonoBehaviour
         _renderer.sprite = _closeSprite;
     }
 
-    public void Init(Table table)
+    public void Init(QuestStorage bag)
     {
-        _table = table != null ? table : throw new ArgumentNullException(nameof(table));
-        _table.QuestStored += OnPressed;
-        _table.QuestRemoved += OnPressed;
+        _bag = bag != null ? bag : throw new ArgumentNullException(nameof(bag));
+        _bag.NewQuestTaken += OnPressed;
+        _bag.QuestRemoved += OnPressed;
     }
 
     public void CloseBag()
@@ -44,9 +44,9 @@ public class BugSpriteChanger : MonoBehaviour
 
     private void OnPressed()
     {
-        if (_table.Quests.Count() > 0 && _interactableSprite.IsEnabled == false)
+        if (_bag.Quests.Count() > 0 && _interactableSprite.IsEnabled == false)
             _renderer.sprite = _openFullSprite;
-        else if (_table.Quests.Count() == 0 && _interactableSprite.IsEnabled == false)
+        else if (_bag.Quests.Count() == 0 && _interactableSprite.IsEnabled == false)
             _renderer.sprite = _openEmptySprite;
     }
 }

@@ -69,3 +69,54 @@ public class NewQuestInitializer : MonoBehaviour
         QuestStored?.Invoke(_quests[key]);
     }
 }
+
+public interface IQuestSorter
+{
+    public event Action<Quest> QuestStored;
+}
+
+public class BagAdapter : IQuestSorter
+{
+    private readonly NewQuestInitializer _questGiver;
+
+    public BagAdapter(NewQuestInitializer questGiver)
+    {
+        _questGiver = questGiver != null ? questGiver : throw new ArgumentNullException(nameof(questGiver));
+        _questGiver.QuestStored += OnQuestTaken;
+    }
+
+    ~ BagAdapter()
+    {
+        _questGiver.QuestStored -= OnQuestTaken;
+    }
+
+    public event Action<Quest> QuestStored;
+
+    private void OnQuestTaken(Quest quest)
+    {
+        QuestStored?.Invoke(quest);
+    }
+}
+
+public class DeskAdapter : IQuestSorter
+{
+    private readonly NewQuestInitializer _questGiver;
+
+    public DeskAdapter(NewQuestInitializer questGiver)
+    {
+        _questGiver = questGiver != null ? questGiver : throw new ArgumentNullException(nameof(questGiver));
+        _questGiver.QuestPlaced += OnQuestTaken;
+    }
+
+    ~DeskAdapter()
+    {
+        _questGiver.QuestPlaced -= OnQuestTaken;
+    }
+
+    public event Action<Quest> QuestStored;
+
+    private void OnQuestTaken(Quest quest)
+    {
+        QuestStored?.Invoke(quest);
+    }
+}

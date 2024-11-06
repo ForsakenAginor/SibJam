@@ -23,8 +23,8 @@ public class Root : MonoBehaviour
     [SerializeField] private UIElement _tutorial;
 
     private DayData _dayData;
-    private Table _table;
-    private Desk _desk;
+    private QuestStorage _table;
+    private QuestStorage _desk;
     private QuestAcceptingMonitor _questAcceptingMonitor;
     private SaveLoadSystem _saveLoadSystem;
     private Health _mood;
@@ -62,8 +62,13 @@ public class Root : MonoBehaviour
         NewQuestCreator questCreator = new NewQuestCreator(_saveLoadSystem, currentDay);
         _questAcceptingMonitor = new(_newQuestInitializer);
         _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration, _peasants);
-        _table = new Table(_saveLoadSystem, _newQuestInitializer, _deskInitializer, currentDay, _eventsConfiguration);
-        _desk = new Desk(_saveLoadSystem, _newQuestInitializer, _tableInitializer, currentDay, _eventsConfiguration);
+        BagAdapter bagAdapter = new BagAdapter(_newQuestInitializer);
+        DeskAdapter deskAdapter = new DeskAdapter(_newQuestInitializer);
+
+        _table = new QuestStorage(bagAdapter, _deskInitializer, currentDay, _eventsConfiguration,
+            _saveLoadSystem.GetStoredQuests(), _saveLoadSystem.SaveStoredQuests);
+        _desk = new QuestStorage(deskAdapter, _tableInitializer, currentDay, _eventsConfiguration,
+            _saveLoadSystem.GetPlacedQuests(), _saveLoadSystem.SavePlacedQuests);
 
         _bugSpriteChanger.Init(_table);
         _deskSpriteChanger.Init(_desk);

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableInitializer : MonoBehaviour
+public class TableInitializer : MonoBehaviour, IQuestsStorageInitializer
 {
     private readonly Dictionary<IKey, Quest> _quests = new Dictionary<IKey, Quest>();
 
@@ -14,24 +14,24 @@ public class TableInitializer : MonoBehaviour
     [SerializeField] private AudioSource _buttonClickSource;
 
     private IEventsInfoGetter _eventsInfoGetter;
-    private Table _table;
+    private QuestStorage _bag;
 
-    public event Action<Quest> QuestPlaced;
+    public event Action<Quest> QuestTransfered;
 
     private void OnDestroy()
     {
-        _table.QuestStored -= OnQuestStored;
+        _bag.NewQuestTaken -= OnQuestStored;
     }
 
-    public void Init(Table table, IEventsInfoGetter configuration)
+    public void Init(QuestStorage bag, IEventsInfoGetter configuration)
     {
         _eventsInfoGetter = configuration != null ? configuration : throw new ArgumentNullException(nameof(configuration));
-        _table = table != null ? table : throw new ArgumentNullException(nameof(table));
+        _bag = bag != null ? bag : throw new ArgumentNullException(nameof(bag));
 
-        foreach (var quest in _table.Quests)        
+        foreach (var quest in _bag.Quests)        
             CreateView(quest);
 
-        _table.QuestStored += OnQuestStored;
+        _bag.NewQuestTaken += OnQuestStored;
     }
 
     private void OnQuestStored(Quest quest)
@@ -54,7 +54,12 @@ public class TableInitializer : MonoBehaviour
 
     private void QuestPlacedCallback(IKey key)
     {
-        _table.RemoveQuest(_quests[key]);
-        QuestPlaced?.Invoke(_quests[key]);
+        _bag.RemoveQuest(_quests[key]);
+        QuestTransfered?.Invoke(_quests[key]);
     }
+}
+
+public interface IQuestsStorageInitializer
+{
+    public event Action<Quest> QuestTransfered;
 }

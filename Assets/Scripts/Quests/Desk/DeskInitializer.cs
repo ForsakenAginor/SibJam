@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeskInitializer : MonoBehaviour
+public class DeskInitializer : MonoBehaviour, IQuestsStorageInitializer
 {
     private readonly Dictionary<IKey, Quest> _quests = new Dictionary<IKey, Quest>();
 
@@ -14,16 +14,16 @@ public class DeskInitializer : MonoBehaviour
     [SerializeField] private AudioSource _buttonClickSource;
 
     private IEventsInfoGetter _eventsInfoGetter;
-    private Desk _desk;
+    private QuestStorage _desk;
 
-    public event Action<Quest> QuestStored;
+    public event Action<Quest> QuestTransfered;
 
     private void OnDestroy()
     {
-        _desk.QuestPlaced -= OnQuestPlaced;
+        _desk.NewQuestTaken -= OnQuestPlaced;
     }
 
-    public void Init(Desk desk, IEventsInfoGetter configuration)
+    public void Init(QuestStorage desk, IEventsInfoGetter configuration)
     {
         _eventsInfoGetter = configuration != null ? configuration : throw new ArgumentNullException(nameof(configuration));
         _desk = desk != null ? desk : throw new ArgumentNullException(nameof(desk));
@@ -31,7 +31,7 @@ public class DeskInitializer : MonoBehaviour
         foreach (var quest in _desk.Quests)
             CreateView(quest);
 
-        _desk.QuestPlaced += OnQuestPlaced;
+        _desk.NewQuestTaken += OnQuestPlaced;
     }
 
     private void OnQuestPlaced(Quest quest)
@@ -55,6 +55,6 @@ public class DeskInitializer : MonoBehaviour
     private void QuestPlacedCallback(IKey key)
     {
         _desk.RemoveQuest(_quests[key]);
-        QuestStored?.Invoke(_quests[key]);
+        QuestTransfered?.Invoke(_quests[key]);
     }
 }

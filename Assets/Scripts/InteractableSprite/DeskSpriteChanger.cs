@@ -18,7 +18,7 @@ public class DeskSpriteChanger : MonoBehaviour
     [SerializeField] private UIElement _questionMark;
 
     private SpriteRenderer _renderer;
-    private Desk _desk;
+    private QuestStorage _desk;
 
     private void Awake()
     {
@@ -28,11 +28,11 @@ public class DeskSpriteChanger : MonoBehaviour
             _interactableSprite.Pressed += OnContainChanged;
     }
 
-    public void Init(Desk table)
+    public void Init(QuestStorage table)
     {
         _desk = table != null ? table : throw new ArgumentNullException(nameof(table));
         OnContainChanged();
-        _desk.QuestPlaced += OnContainChanged;
+        _desk.NewQuestTaken += OnContainChanged;
         _desk.QuestRemoved += OnContainChanged;
     }
 

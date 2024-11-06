@@ -1,45 +1,51 @@
 using System;
 using System.Collections.Generic;
 
-public class Desk
+public class QuestStorage
 {
     private readonly List<Quest> _quests = new List<Quest>();
     private readonly IEventsLifeTimeInfoGetter _eventsInfoGetter;
-    private readonly NewQuestInitializer _newQuestInitializer;
-    private readonly TableInitializer _table;
+    private readonly IQuestSorter _newQuestInitializer;
+    private readonly IQuestsStorageInitializer _anotherStorage;
     private readonly Days _currentDay;
-    private readonly SaveLoadSystem _saveLoadSystem;
 
-    public Desk(SaveLoadSystem saveLoadSystem, NewQuestInitializer newQuestInitializer, TableInitializer table,
-        Days current, IEventsLifeTimeInfoGetter configuration)
+    public QuestStorage(IQuestSorter questGiver,
+        IQuestsStorageInitializer table,
+        Days current, IEventsLifeTimeInfoGetter configuration,
+        List<SerializableQuest> loadData, Action<List<SerializableQuest>> saveDataCallback)
     {
-        _saveLoadSystem = saveLoadSystem != null ?
-            saveLoadSystem :
-            throw new ArgumentNullException(nameof(saveLoadSystem));
         _eventsInfoGetter = configuration != null ?
             configuration :
             throw new ArgumentNullException(nameof(configuration));
-        _newQuestInitializer = newQuestInitializer != null ?
-            newQuestInitializer :
-            throw new ArgumentNullException(nameof(newQuestInitializer));
-        _table = table != null ?
+        
+        _newQuestInitializer = questGiver != null ?
+            questGiver :
+            throw new ArgumentNullException(nameof(questGiver));
+        _anotherStorage = table != null ?
             table : 
             throw new ArgumentNullException(nameof(table));
+        Save = saveDataCallback != null ?
+            saveDataCallback :
+            throw new ArgumentNullException(nameof(saveDataCallback));
+        
         _currentDay = current;
-        CreateQuestList();
-        _newQuestInitializer.QuestPlaced += OnQuestPlaced;
-        _table.QuestPlaced += OnQuestPlaced;
+        CreateQuestList(loadData);
+
+        _newQuestInitializer.QuestStored += OnQuestStored;
+        _anotherStorage.QuestTransfered += OnQuestStored;
     }
 
-    public event Action<Quest> QuestPlaced;
+    public event Action<Quest> NewQuestTaken;
     public event Action QuestRemoved;
+
+    private Action<List<SerializableQuest>> Save;
 
     public IEnumerable<Quest> Quests => _quests;
 
     public void RemoveQuest(Quest quest)
     {
         if (_quests.Contains(quest) == false)
-            throw new InvalidOperationException("Quest don't existing in Desk");
+            throw new InvalidOperationException("Quest don't existing in Storage");
 
         _quests.Remove(quest);
         QuestRemoved?.Invoke();
@@ -52,23 +58,21 @@ public class Desk
         foreach (var quest in _quests)
             quests.Add(quest.Serialize());
 
-        _saveLoadSystem.SavePlacedQuests(quests);
+        Save?.Invoke(quests);
     }
 
-    private void OnQuestPlaced(Quest quest)
+    private void OnQuestStored(Quest quest)
     {
         if (quest == null)
             throw new ArgumentNullException(nameof(quest));
 
         quest.CalcExpireDate(_currentDay, _eventsInfoGetter.GetLifeTime(quest.EventName));
         _quests.Add(quest);
-        QuestPlaced?.Invoke(quest);
+        NewQuestTaken?.Invoke(quest);
     }
 
-    private void CreateQuestList()
+    private void CreateQuestList(IEnumerable<SerializableQuest> list)
     {
-        List<SerializableQuest> list = _saveLoadSystem.GetPlacedQuests();
-
         if (list == null)
             return;
 
