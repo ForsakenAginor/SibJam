@@ -1,12 +1,10 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SpeedUp : MonoBehaviour
 {
     [SerializeField] private Button _button;
+    [SerializeField] private float _timeBoostValue = 3f;
 
     private void Awake()
     {
@@ -22,6 +20,6 @@ public class SpeedUp : MonoBehaviour
     private void OnButtonClick()
     {
         _button.interactable = false;
-        Time.timeScale = 3f;
+        Time.timeScale = _timeBoostValue;
     }
 }

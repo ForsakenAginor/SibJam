@@ -1,8 +1,11 @@
-public enum Scenes
+namespace Assets.Scripts.General
 {
-    MainMenu,
-    GameScene,
-    Consequences,
-    WinScene,
-    LoseScene
+    public enum Scenes
+    {
+        MainMenu,
+        GameScene,
+        Consequences,
+        WinScene,
+        LoseScene
+    }
 }

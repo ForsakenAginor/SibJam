@@ -1,33 +1,36 @@
 ﻿using UnityEngine;
 
-public class MusicSingleton : MonoBehaviour
+namespace Assets.Scripts.Sound.AudioMixer
 {
-    private static MusicSingleton _instance;
-    [SerializeField] private AudioSource _music;
-    private bool _isAdded;
-
-    public static MusicSingleton Instance { get { return _instance; } }
-
-    public AudioSource Music
+    public class MusicSingleton : MonoBehaviour
     {
-        get
-        {
-            _isAdded = true;
-            return _music;
-        }
-    }    
+        private static MusicSingleton _instance;
+        [SerializeField] private AudioSource _music;
+        private bool _isAdded;
 
-    public bool IsAdded => _isAdded;
+        public static MusicSingleton Instance { get { return _instance; } }
 
-    private void Awake()
-    {
-        if (_instance != null)
+        public AudioSource Music
         {
-            Destroy(gameObject);
-            return;
+            get
+            {
+                _isAdded = true;
+                return _music;
+            }
         }
 
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
+        public bool IsAdded => _isAdded;
+
+        private void Awake()
+        {
+            if (_instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }

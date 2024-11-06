@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.EventConfiguration;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Scripts.Quests.QuestCreation

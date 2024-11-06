@@ -1,6 +1,8 @@
-﻿using Assets.Scripts.Quests;
+﻿using Assets.Scripts.EventConfiguration;
+using Assets.Scripts.General;
+using Assets.Scripts.Quests;
 using Assets.Scripts.SaveSystem;
-using Sound;
+using Assets.Scripts.Sound.AudioMixer;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

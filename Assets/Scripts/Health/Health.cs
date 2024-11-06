@@ -1,9 +1,12 @@
-public enum Health
+namespace Assets.Scripts.Health
 {
-    Happiness,
-    Average,
-    Fear,
-    Hopeless,
-    Rage,
-    Riot,
+    public enum Health
+    {
+        Happiness,
+        Average,
+        Fear,
+        Hopeless,
+        Rage,
+        Riot,
+    }
 }

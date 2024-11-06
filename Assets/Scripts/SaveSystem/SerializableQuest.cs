@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.EventConfiguration;
+using System;
 
 namespace Assets.Scripts.SaveSystem
 {

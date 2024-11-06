@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Sound
+namespace Assets.Scripts.Sound.AudioMixer
 {
     public class VolumeChanger
     {

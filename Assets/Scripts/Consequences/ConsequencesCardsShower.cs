@@ -2,6 +2,8 @@
 using System;
 using UnityEngine;
 using Assets.Scripts.Quests;
+using Assets.Scripts.General;
+using Assets.Scripts.EventConfiguration;
 
 public class ConsequencesCardsShower : MonoBehaviour
 {

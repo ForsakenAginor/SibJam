@@ -1,13 +1,13 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.General
+namespace Assets.Scripts.Sound
 {
     [RequireComponent(typeof(Button))]
-    public class SceneChangeButton : MonoBehaviour
+    public class ButtonClickSoundHandler : MonoBehaviour
     {
-        [SerializeField] private Scenes _scene;
+        [SerializeField] private AudioSource _audio;
+
         private Button _button;
 
         private void Awake()
@@ -20,15 +20,10 @@ namespace Assets.Scripts.General
         {
             _button.onClick.RemoveListener(OnButtonClick);
         }
-        public void MainScene()
-        {
-            SceneManager.LoadScene(_scene.ToString());
-        }
 
         private void OnButtonClick()
         {
-            Invoke("MainScene", 0.5f);
+            _audio.Play();
         }
-
     }
 }

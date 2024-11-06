@@ -1,3 +1,4 @@
+using Assets.Scripts.General;
 using Assets.Scripts.Quests.QuestCreation.Controller;
 using System;
 using TMPro;

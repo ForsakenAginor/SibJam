@@ -1,4 +1,4 @@
-using Sound;
+using Assets.Scripts.Sound.AudioMixer;
 using UnityEngine;
 
 public class MainMenuRoot : MonoBehaviour

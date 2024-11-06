@@ -2,12 +2,14 @@
 using TMPro;
 using UnityEngine;
 
-public class MoodInfoView : MonoBehaviour
+namespace Assets.Scripts.Health
 {
-    [SerializeField] private UIElement _infoWindow;
-    [SerializeField] private TMP_Text _textField;
+    public class MoodInfoView : MonoBehaviour
+    {
+        [SerializeField] private UIElement _infoWindow;
+        [SerializeField] private TMP_Text _textField;
 
-    private readonly Dictionary<Health, string> _moodDescriptions = new Dictionary<Health, string>()
+        private readonly Dictionary<Health, string> _moodDescriptions = new Dictionary<Health, string>()
     {
         {Health.Happiness, "Жители деревни улыбаются и полны радости! Вы сделали их день лучше, и они благодарны вам за это"},
         {Health.Average, "Жители деревни спокойны и не испытывают ни особой радости, ни тревоги. Кажется, вы их устраиваете"},
@@ -16,9 +18,10 @@ public class MoodInfoView : MonoBehaviour
         {Health.Rage, "Жители деревни в ярости! Их терпение иссякло, и они готовы к решительным мерам. Ваше положение в деревне под угрозой"},
     };
 
-    public void ShowMoodInfo(Health mood)
-    {
-        _textField.text = _moodDescriptions[mood];
-        _infoWindow.Enable();
+        public void ShowMoodInfo(Health mood)
+        {
+            _textField.text = _moodDescriptions[mood];
+            _infoWindow.Enable();
+        }
     }
 }
