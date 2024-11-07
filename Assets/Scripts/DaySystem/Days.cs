@@ -1,11 +1,14 @@
-﻿public enum Days
+﻿namespace Assets.Scripts.DaySystem
 {
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday,
-    Final,
+    public enum Days
+    {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday,
+        Final,
+    }
 }

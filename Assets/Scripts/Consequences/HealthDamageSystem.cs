@@ -4,39 +4,42 @@ using Assets.Scripts.Quests;
 using Assets.Scripts.SaveSystem;
 using System;
 
-public class HealthDamageSystem
+namespace Assets.Scripts.Consequences
 {
-    private readonly ConsequencesCardsShower _questManager;
-    private readonly IImportantInfoGetter _importantInfoGetter;
-    private readonly SaveLoadSystem _saveLoadSystem;
-
-    private Health _mood;
-
-    public HealthDamageSystem(ConsequencesCardsShower questManager, IImportantInfoGetter importantInfoGetter, SaveLoadSystem saveLoadSystem)
+    public class HealthDamageSystem
     {
-        _questManager = questManager != null ? questManager : throw new ArgumentNullException(nameof(questManager));
-        _importantInfoGetter = importantInfoGetter != null ? importantInfoGetter : throw new ArgumentNullException(nameof(importantInfoGetter));
-        _saveLoadSystem = saveLoadSystem != null ? saveLoadSystem : throw new ArgumentNullException(nameof(saveLoadSystem));
+        private readonly ConsequencesCardsShower _questManager;
+        private readonly IImportantInfoGetter _importantInfoGetter;
+        private readonly SaveLoadSystem _saveLoadSystem;
 
-        _mood = _saveLoadSystem.GetMood();
-        questManager.QuestExpired += OnQuestExpired;
-    }
+        private Health _mood;
 
-    ~HealthDamageSystem()
-    {
-        _questManager.QuestExpired -= OnQuestExpired;
-    }
+        public HealthDamageSystem(ConsequencesCardsShower questManager, IImportantInfoGetter importantInfoGetter, SaveLoadSystem saveLoadSystem)
+        {
+            _questManager = questManager != null ? questManager : throw new ArgumentNullException(nameof(questManager));
+            _importantInfoGetter = importantInfoGetter != null ? importantInfoGetter : throw new ArgumentNullException(nameof(importantInfoGetter));
+            _saveLoadSystem = saveLoadSystem != null ? saveLoadSystem : throw new ArgumentNullException(nameof(saveLoadSystem));
 
-    public void SaveMood()
-    {
-        _saveLoadSystem.SaveMood(_mood);
-    }
+            _mood = _saveLoadSystem.GetMood();
+            questManager.QuestExpired += OnQuestExpired;
+        }
 
-    private void OnQuestExpired(Quest quest)
-    {
-        bool isImportant = _importantInfoGetter.GetImportantStatus(quest.EventName);
+        ~HealthDamageSystem()
+        {
+            _questManager.QuestExpired -= OnQuestExpired;
+        }
 
-        if (isImportant && _mood != Health.Riot)
-            _mood = (Health)((int)_mood + 1);
+        public void SaveMood()
+        {
+            _saveLoadSystem.SaveMood(_mood);
+        }
+
+        private void OnQuestExpired(Quest quest)
+        {
+            bool isImportant = _importantInfoGetter.GetImportantStatus(quest.EventName);
+
+            if (isImportant && _mood != Health.Riot)
+                _mood = (Health)((int)_mood + 1);
+        }
     }
 }

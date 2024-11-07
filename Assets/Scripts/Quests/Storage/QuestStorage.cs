@@ -1,3 +1,4 @@
+using Assets.Scripts.DaySystem;
 using Assets.Scripts.EventConfiguration;
 using Assets.Scripts.Quests.Storage.View;
 using Assets.Scripts.SaveSystem;

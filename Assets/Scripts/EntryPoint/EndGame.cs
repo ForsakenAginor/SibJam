@@ -1,10 +1,13 @@
 using Assets.Scripts.General;
 using UnityEngine;
 
-public class EndGame : MonoBehaviour
+namespace Assets.Scripts.EntryPoint
 {
-    private void Start()
+    public class EndGame : MonoBehaviour
     {
-        SceneChangerSingleton.Instance.FadeOut();
+        private void Start()
+        {
+            SceneChangerSingleton.Instance.FadeOut();
+        }
     }
 }

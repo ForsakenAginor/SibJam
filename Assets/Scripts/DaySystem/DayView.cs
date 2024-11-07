@@ -3,12 +3,14 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
-public class DayView : MonoBehaviour
+namespace Assets.Scripts.DaySystem
 {
-    [SerializeField] private TMP_Text _textField;
-    [SerializeField] private float _animationDuration = 3f;
+    public class DayView : MonoBehaviour
+    {
+        [SerializeField] private TMP_Text _textField;
+        [SerializeField] private float _animationDuration = 3f;
 
-    private Dictionary<Days, string> _daysColors = new Dictionary<Days, string>()
+        private Dictionary<Days, string> _daysColors = new Dictionary<Days, string>()
     {
             {Days.Monday, "1 День"},
             {Days.Tuesday, "2 День"},
@@ -20,9 +22,10 @@ public class DayView : MonoBehaviour
             {Days.Final, "ФИНАЛЬНЫЙ ДЕНЬ"}
     };
 
-    public void Init(Days currentDay)
-    {
-        _textField.text = _daysColors[currentDay];
-        _textField.DOFade(1f, _animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutCubic);
+        public void Init(Days currentDay)
+        {
+            _textField.text = _daysColors[currentDay];
+            _textField.DOFade(1f, _animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(Ease.OutCubic);
+        }
     }
 }

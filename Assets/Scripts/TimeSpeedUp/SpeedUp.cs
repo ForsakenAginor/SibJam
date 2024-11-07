@@ -1,25 +1,28 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpeedUp : MonoBehaviour
+namespace Assets.Scripts.TimeSpeedUp
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private float _timeBoostValue = 3f;
-
-    private void Awake()
+    public class SpeedUp : MonoBehaviour
     {
-        _button.onClick.AddListener(OnButtonClick);
-    }
+        [SerializeField] private Button _button;
+        [SerializeField] private float _timeBoostValue = 3f;
 
-    private void OnDestroy()
-    {
-        _button.onClick.RemoveListener(OnButtonClick);
-        Time.timeScale = 1f;
-    }
+        private void Awake()
+        {
+            _button.onClick.AddListener(OnButtonClick);
+        }
 
-    private void OnButtonClick()
-    {
-        _button.interactable = false;
-        Time.timeScale = _timeBoostValue;
+        private void OnDestroy()
+        {
+            _button.onClick.RemoveListener(OnButtonClick);
+            Time.timeScale = 1f;
+        }
+
+        private void OnButtonClick()
+        {
+            _button.interactable = false;
+            Time.timeScale = _timeBoostValue;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.EventConfiguration;
+﻿using Assets.Scripts.DaySystem;
+using Assets.Scripts.EventConfiguration;
 using System;
 using System.Collections.Generic;
 

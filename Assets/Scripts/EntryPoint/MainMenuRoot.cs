@@ -2,19 +2,22 @@ using Assets.Scripts.General;
 using Assets.Scripts.Sound.AudioMixer;
 using UnityEngine;
 
-public class MainMenuRoot : MonoBehaviour
+namespace Assets.Scripts.EntryPoint
 {
-    [SerializeField] private SoundInitializer _soundInitializer;
-
-    private void Start()
+    public class MainMenuRoot : MonoBehaviour
     {
-        _soundInitializer.Init();
+        [SerializeField] private SoundInitializer _soundInitializer;
 
-        if (MusicSingleton.Instance.IsAdded == false)
-            _soundInitializer.AddMusicSource(MusicSingleton.Instance.Music);
-        else
-            _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
+        private void Start()
+        {
+            _soundInitializer.Init();
 
-        SceneChangerSingleton.Instance.FadeOut();
+            if (MusicSingleton.Instance.IsAdded == false)
+                _soundInitializer.AddMusicSource(MusicSingleton.Instance.Music);
+            else
+                _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
+
+            SceneChangerSingleton.Instance.FadeOut();
+        }
     }
 }
