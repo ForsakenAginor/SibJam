@@ -1,8 +1,12 @@
-﻿using System;
+﻿using Assets.Scripts.EventConfiguration;
+using System;
 
-[Serializable]
-public struct SerializableQuest
+namespace Assets.Scripts.SaveSystem
 {
-    public EventNames EventName;
-    public Days DayObtain;
+    [Serializable]
+    public struct SerializableQuest
+    {
+        public EventNames EventName;
+        public Days DayObtain;
+    }
 }

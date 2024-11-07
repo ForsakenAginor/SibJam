@@ -1,31 +1,34 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class VillageEventSO
+namespace Assets.Scripts.EventConfiguration
 {
-    [SerializeField] private string _name = "test";
-    [SerializeField] private string _description = "dTest";
-    [SerializeField] private string _failDescription = "fdTest";
-    [SerializeField] private string _completeDescription = "cdTest";
-    [SerializeField] private bool _isImportant = false;
-    [SerializeField] private int _deadline = 3;
-    [SerializeField] private Sprite _failSprite;
-    [SerializeField] private Sprite _completeSprite;
+    [Serializable]
+    public class VillageEventSO
+    {
+        [SerializeField] private string _name = "test";
+        [SerializeField] private string _description = "dTest";
+        [SerializeField] private string _failDescription = "fdTest";
+        [SerializeField] private string _completeDescription = "cdTest";
+        [SerializeField] private bool _isImportant = false;
+        [SerializeField] private int _deadline = 3;
+        [SerializeField] private Sprite _failSprite;
+        [SerializeField] private Sprite _completeSprite;
 
-    public string Name => _name;
+        public string Name => _name;
 
-    public string Description => _description;
+        public string Description => _description;
 
-    public string FailDescription => _failDescription;
+        public string FailDescription => _failDescription;
 
-    public string CompleteDescription => _completeDescription;
-    
-    public bool IsImportant => _isImportant;
+        public string CompleteDescription => _completeDescription;
 
-    public int Deadline => _deadline;
+        public bool IsImportant => _isImportant;
 
-    public Sprite FailSprite => _failSprite;
+        public int Deadline => _deadline;
 
-    public Sprite CompleteSprite => _completeSprite;
+        public Sprite FailSprite => _failSprite;
+
+        public Sprite CompleteSprite => _completeSprite;
+    }
 }

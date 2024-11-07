@@ -1,4 +1,13 @@
-using Sound;
+using Assets.Scripts.EventConfiguration;
+using Assets.Scripts.General;
+using Assets.Scripts.Mood;
+using Assets.Scripts.Quests;
+using Assets.Scripts.Quests.QuestCreation;
+using Assets.Scripts.Quests.QuestCreation.View;
+using Assets.Scripts.Quests.Storage;
+using Assets.Scripts.Quests.Storage.View;
+using Assets.Scripts.SaveSystem;
+using Assets.Scripts.Sound.AudioMixer;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,39 +16,52 @@ using UnityEngine.UI;
 
 public class Root : MonoBehaviour
 {
+    [Header("Data")]
     [SerializeField] private EventsConfiguration _eventsConfiguration;
+    private SaveLoadSystem _saveLoadSystem;
+
+    [Header("Audio")]
     [SerializeField] private SoundInitializer _soundInitializer;
 
-    [SerializeField] private DayView _dayView;
-    [SerializeField] private Button _nextDayButton;
-    [SerializeField] private NewQuestInitializer _newQuestInitializer;
-    [SerializeField] private TableInitializer _tableInitializer;
-    [SerializeField] private DeskInitializer _deskInitializer;
-    [SerializeField] private List<InteractablePeasant> _peasants;
-    [SerializeField] private HealthView _healthView;
-    [SerializeField] private MoodInfoView _moodInfoView;
-    [SerializeField] private BugSpriteChanger _bugSpriteChanger;
+    [Header("Desk")]
+    [SerializeField] private StorageViewCreator _deskViewCreator;
     [SerializeField] private DeskSpriteChanger _deskSpriteChanger;
-    [SerializeField] private UIElement _tutorial;
+    private QuestStorage _desk;
 
-    private DayData _dayData;
-    private Table _table;
-    private Desk _desk;
-    private QuestAcceptingMonitor _questAcceptingMonitor;
-    private SaveLoadSystem _saveLoadSystem;
+    [Header("Bag")]
+    [SerializeField] private StorageViewCreator _bagViewCreator;
+    [SerializeField] private BagSpriteChanger _bugSpriteChanger;
+    private QuestStorage _bag;
+
+    [Header("QuestGivingSystem")]
+    [SerializeField] private NewQuestInitializer _newQuestInitializer;
+    [SerializeField] private List<InteractableSprite> _peasants;
+
+    [Header("HealthSystem")]
+    [SerializeField] private MoodInfoView _moodInfoView;
+    [SerializeField] private HealthView _healthView;
+    [SerializeField] private Button _moodInfoAcceptButton;
     private Health _mood;
+
+    [Header("GameProgress")]
+    [SerializeField] private DayView _dayView;
+    [SerializeField] private UIElement _tutorial;
+    [SerializeField] private Button _nextDayButton;
+    [SerializeField] private Button _tutorialAcceptButton;
+    private QuestAcceptingMonitor _questAcceptingMonitor;
+    bool _isFinished = false;
 
     private void Start()
     {
         _soundInitializer.Init();
-        _soundInitializer.AddMusicSourceWithoutVolumeChanging(Singleton.Instance.Music);
+        _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
+        _saveLoadSystem = new SaveLoadSystem();
         _nextDayButton.interactable = false;
-        _dayData = new DayData();
-        Days currentDay = _dayData.GetCurrentDay();
-        _saveLoadSystem = new SaveLoadSystem(currentDay);
 
+        Days currentDay = _saveLoadSystem.GetCurrentDay();
         _mood = _saveLoadSystem.GetMood();
         _healthView.Init(_mood);
+        _dayView.Init(currentDay);
 
         if(currentDay == Days.Monday)
             _tutorial.Enable();
@@ -47,11 +69,13 @@ public class Root : MonoBehaviour
         if (_mood == Health.Riot)
         {
             SceneManager.LoadScene(Scenes.LoseScene.ToString());
+            _isFinished = true;
             return;
         }
         else if (currentDay == Days.Final)
         {
             SceneManager.LoadScene(Scenes.WinScene.ToString());
+            _isFinished = true;
             return;
         }
         else if (currentDay != Days.Monday)
@@ -60,36 +84,53 @@ public class Root : MonoBehaviour
         }
 
         NewQuestCreator questCreator = new NewQuestCreator(_saveLoadSystem, currentDay);
-        _questAcceptingMonitor = new(_newQuestInitializer);
+        _questAcceptingMonitor = new (_newQuestInitializer);
         _newQuestInitializer.Init(questCreator.NewQuests, _eventsConfiguration, _peasants);
-        _table = new Table(_saveLoadSystem, _newQuestInitializer, _deskInitializer, currentDay, _eventsConfiguration);
-        _desk = new Desk(_saveLoadSystem, _newQuestInitializer, _tableInitializer, currentDay, _eventsConfiguration);
 
-        _bugSpriteChanger.Init(_table);
+        BagAdapter bagAdapter = new BagAdapter(_newQuestInitializer);
+        _bag = new QuestStorage(bagAdapter, _deskViewCreator, currentDay, _eventsConfiguration,
+            _saveLoadSystem.GetStoredQuests(), _saveLoadSystem.SaveStoredQuests);
+
+        DeskAdapter deskAdapter = new DeskAdapter(_newQuestInitializer);
+        _desk = new QuestStorage(deskAdapter, _bagViewCreator, currentDay, _eventsConfiguration,
+            _saveLoadSystem.GetPlacedQuests(), _saveLoadSystem.SavePlacedQuests);
+
+        _bugSpriteChanger.Init(_bag);
         _deskSpriteChanger.Init(_desk);
-        _tableInitializer.Init(_table, _eventsConfiguration);
-        _deskInitializer.Init(_desk, _eventsConfiguration);
+        _bagViewCreator.Init(_bag, _eventsConfiguration);
+        _deskViewCreator.Init(_desk, _eventsConfiguration);
 
-        _dayView.Init(currentDay);
+        SceneChangerSingleton.Instance.FadeOut();
 
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled += OnAllQuestHandled;
-
+        _moodInfoAcceptButton.onClick.AddListener(OnEntryMessageAccept);
+        _tutorialAcceptButton.onClick.AddListener(OnEntryMessageAccept);
     }
+
 
     private void OnDestroy()
     {
+        if(_isFinished)
+            return;
+
         _nextDayButton.onClick.RemoveListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled -= OnAllQuestHandled;
     }
 
+    private void OnEntryMessageAccept()
+    {
+        foreach(var peasant in _peasants)
+            peasant.PlayPulseAnimation();
+    }
+
     private void OnNextDayButtonClick()
     {
-        _dayData.SaveDay();
-        _table.SaveData();
+        _saveLoadSystem.SaveDay();
+        _bag.SaveData();
         _desk.SaveData();
         _saveLoadSystem.SaveMood(_mood);
-        SceneManager.LoadScene(Scenes.Consequences.ToString());
+        SceneChangerSingleton.Instance.LoadScene(Scenes.Consequences.ToString());
     }
 
     private void OnAllQuestHandled()

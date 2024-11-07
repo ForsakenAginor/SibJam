@@ -1,6 +1,9 @@
-﻿public interface IStringSaveLoadService
+﻿namespace Assets.Scripts.SaveSystem
 {
-    public string GetSavedInfo();
+    public interface IStringSaveLoadService
+    {
+        public string GetSavedInfo();
 
-    public void SaveInfo(string value);
+        public void SaveInfo(string value);
+    }
 }

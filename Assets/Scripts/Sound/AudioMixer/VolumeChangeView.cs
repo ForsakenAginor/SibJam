@@ -1,7 +1,7 @@
 using System;
 using UnityEngine.UI;
 
-namespace Sound
+namespace Assets.Scripts.Sound.AudioMixer
 {
     public class VolumeChangeView
     {

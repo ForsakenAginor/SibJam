@@ -1,54 +1,57 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-public class DataStorage<T>
+namespace Assets.Scripts.SaveSystem
 {
-    private readonly IStringSaveLoadService _saveLoadService;
-    private readonly Days _currentDay;
-
-    public DataStorage(string keyWord, Days currentDay)
+    public class DataStorage<T>
     {
-        if (string.IsNullOrEmpty(keyWord))
-            throw new ArgumentNullException(nameof(keyWord));
+        private readonly IStringSaveLoadService _saveLoadService;
+        private readonly bool _isFirstCreation;
 
-        _saveLoadService = new PlayerPrefsStringSaveLoadService(keyWord);
-        _currentDay = currentDay;
-    }
-
-    public T LoadData()
-    {
-        T result = default;
-
-        if (_currentDay != Days.Monday)
+        public DataStorage(string keyWord, bool isFirstCreation)
         {
-            string data = _saveLoadService.GetSavedInfo();
-            result = JsonConvert.DeserializeObject<SerializableT>(data).Content;
+            if (string.IsNullOrEmpty(keyWord))
+                throw new ArgumentNullException(nameof(keyWord));
+
+            _saveLoadService = new PlayerPrefsStringSaveLoadService(keyWord);
+            _isFirstCreation = isFirstCreation;
         }
 
-        return result;
-    }
-
-    public void SaveData(T dataThatWillBeSaved)
-    {
-        SerializableT serializableT = new SerializableT()
+        public T LoadData()
         {
-            Content = dataThatWillBeSaved,
-        };
-        string data = JsonConvert.SerializeObject(
-            serializableT,
-            Formatting.Indented,
-            new JsonSerializerSettings
+            T result = default;
+
+            if (_isFirstCreation == false)
             {
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                string data = _saveLoadService.GetSavedInfo();
+                result = JsonConvert.DeserializeObject<SerializableT>(data).Content;
             }
-            );
 
-        _saveLoadService.SaveInfo(data);
+            return result;
+        }
+
+        public void SaveData(T dataThatWillBeSaved)
+        {
+            SerializableT serializableT = new SerializableT()
+            {
+                Content = dataThatWillBeSaved,
+            };
+            string data = JsonConvert.SerializeObject(
+                serializableT,
+                Formatting.Indented,
+                new JsonSerializerSettings
+                {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                }
+                );
+
+            _saveLoadService.SaveInfo(data);
+        }
+
+        [Serializable]
+        private class SerializableT
+        {
+            public T Content;
+        }
     }
-
-    [Serializable]
-    private class SerializableT
-    {
-        public T Content;
-    }        
 }

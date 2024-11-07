@@ -1,58 +1,63 @@
-﻿using System;
+﻿using Assets.Scripts.EventConfiguration;
+using Assets.Scripts.SaveSystem;
+using System;
 using System.Collections.Generic;
 
-public class NewQuestCreator
+namespace Assets.Scripts.Quests.QuestCreation
 {
-    private readonly SaveLoadSystem _saveLoadSystem;
-    private readonly List<EventNames> _availableQuests;
-    private readonly List<Quest> _newQuests = new List<Quest>();
-
-    public NewQuestCreator(SaveLoadSystem saveLoadSystem, Days currentDay, int questsAmount = 3)
+    public class NewQuestCreator
     {
-        if (questsAmount <= 0)
-            throw new ArgumentOutOfRangeException(nameof(questsAmount));
+        private readonly SaveLoadSystem _saveLoadSystem;
+        private readonly List<EventNames> _availableQuests;
+        private readonly List<Quest> _newQuests = new List<Quest>();
 
-        _saveLoadSystem = saveLoadSystem != null
-            ? saveLoadSystem
-            : throw new ArgumentNullException(nameof(saveLoadSystem));
-
-        _availableQuests = _saveLoadSystem.GetAvailableQuests();
-
-        if (_availableQuests == null)
+        public NewQuestCreator(SaveLoadSystem saveLoadSystem, Days currentDay, int questsAmount = 3)
         {
-            _availableQuests = new();
+            if (questsAmount <= 0)
+                throw new ArgumentOutOfRangeException(nameof(questsAmount));
 
-            foreach (var i in Enum.GetValues(typeof(EventNames)))
-                _availableQuests.Add((EventNames)i);
-        }
+            _saveLoadSystem = saveLoadSystem != null
+                ? saveLoadSystem
+                : throw new ArgumentNullException(nameof(saveLoadSystem));
 
+            _availableQuests = _saveLoadSystem.GetAvailableQuests();
 
-        RandomQuestGetter randomQuestGetter = new(_availableQuests, currentDay);
-
-        if (currentDay != Days.Monday)
-        {
-            for (int i = 0; i < questsAmount; i++)
+            if (_availableQuests == null)
             {
-                Quest quest = randomQuestGetter.GetRandomQuest();
+                _availableQuests = new();
 
-                if (quest != null)
-                    _newQuests.Add(quest);
+                foreach (var i in Enum.GetValues(typeof(EventNames)))
+                    _availableQuests.Add((EventNames)i);
             }
-        }
-        else
-        {
-            for (int i = 0; i < questsAmount; i++)
+
+
+            QuestGetter randomQuestGetter = new(_availableQuests, currentDay);
+
+            if (currentDay != Days.Monday)
             {
-                Quest quest = randomQuestGetter.GetTutorialQuest();
+                for (int i = 0; i < questsAmount; i++)
+                {
+                    Quest quest = randomQuestGetter.GetRandomQuest();
 
-                if (quest != null)
-                    _newQuests.Add(quest);
+                    if (quest != null)
+                        _newQuests.Add(quest);
+                }
             }
+            else
+            {
+                for (int i = 0; i < questsAmount; i++)
+                {
+                    Quest quest = randomQuestGetter.GetTutorialQuest();
+
+                    if (quest != null)
+                        _newQuests.Add(quest);
+                }
+            }
+
+
+            _saveLoadSystem.SaveAvailableQuests(_availableQuests);
         }
 
-
-        _saveLoadSystem.SaveAvailableQuests(_availableQuests);
+        public List<Quest> NewQuests => _newQuests;
     }
-
-    public List<Quest> NewQuests => _newQuests;
 }

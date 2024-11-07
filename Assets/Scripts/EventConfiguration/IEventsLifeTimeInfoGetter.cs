@@ -1,4 +1,7 @@
-﻿public interface IEventsLifeTimeInfoGetter
+﻿namespace Assets.Scripts.EventConfiguration
 {
-    public int GetLifeTime(EventNames name);
+    public interface IEventsLifeTimeInfoGetter
+    {
+        public int GetLifeTime(EventNames name);
+    }
 }

@@ -1,31 +1,34 @@
 ﻿using System;
 using UnityEngine;
 
-public class PlayerPrefsStringSaveLoadService : IStringSaveLoadService
+namespace Assets.Scripts.SaveSystem
 {
-    private readonly string _playerPrefsKey = nameof(_playerPrefsKey);
-
-    public PlayerPrefsStringSaveLoadService(string key)
+    public class PlayerPrefsStringSaveLoadService : IStringSaveLoadService
     {
-        if(string.IsNullOrEmpty(key))
-            throw new ArgumentNullException(nameof(key));
+        private readonly string _playerPrefsKey = nameof(_playerPrefsKey);
 
-        _playerPrefsKey = key;
-    }
+        public PlayerPrefsStringSaveLoadService(string key)
+        {
+            if (string.IsNullOrEmpty(key))
+                throw new ArgumentNullException(nameof(key));
 
-    public string GetSavedInfo()
-    {
-        if (PlayerPrefs.HasKey(_playerPrefsKey) == false)
-            throw new Exception($"Can't find {_playerPrefsKey} data in playerPrefs");
+            _playerPrefsKey = key;
+        }
 
-        return PlayerPrefs.GetString(_playerPrefsKey);
-    }
+        public string GetSavedInfo()
+        {
+            if (PlayerPrefs.HasKey(_playerPrefsKey) == false)
+                throw new Exception($"Can't find {_playerPrefsKey} data in playerPrefs");
 
-    public void SaveInfo(string value)
-    {
-        if (string.IsNullOrEmpty(value))
-            throw new ArgumentNullException(nameof(value));
+            return PlayerPrefs.GetString(_playerPrefsKey);
+        }
 
-        PlayerPrefs.SetString(_playerPrefsKey, value);
+        public void SaveInfo(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                throw new ArgumentNullException(nameof(value));
+
+            PlayerPrefs.SetString(_playerPrefsKey, value);
+        }
     }
 }

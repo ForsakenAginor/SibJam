@@ -1,4 +1,7 @@
-﻿public interface IImportantInfoGetter
+﻿namespace Assets.Scripts.EventConfiguration
 {
-    public bool GetImportantStatus(EventNames name);
+    public interface IImportantInfoGetter
+    {
+        public bool GetImportantStatus(EventNames name);
+    }
 }

@@ -1,4 +1,5 @@
-using Sound;
+using Assets.Scripts.General;
+using Assets.Scripts.Sound.AudioMixer;
 using UnityEngine;
 
 public class MainMenuRoot : MonoBehaviour
@@ -9,9 +10,11 @@ public class MainMenuRoot : MonoBehaviour
     {
         _soundInitializer.Init();
 
-        if (Singleton.Instance.IsAdded == false)
-            _soundInitializer.AddMusicSource(Singleton.Instance.Music);
+        if (MusicSingleton.Instance.IsAdded == false)
+            _soundInitializer.AddMusicSource(MusicSingleton.Instance.Music);
         else
-            _soundInitializer.AddMusicSourceWithoutVolumeChanging(Singleton.Instance.Music);
+            _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
+
+        SceneChangerSingleton.Instance.FadeOut();
     }
 }
