@@ -40,6 +40,7 @@ public class DeskSpriteChanger : MonoBehaviour
 
     private void OnContainChanged(Quest _)
     {
+        _interactableSprite.PlayPulseAnimation();
         OnContainChanged();
     }
 

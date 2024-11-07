@@ -47,6 +47,7 @@ public class BagSpriteChanger : MonoBehaviour
 
     private void OnPressed(Quest _)
     {
+        _interactableSprite.PlayPulseAnimation();
         OnPressed();
     }
 

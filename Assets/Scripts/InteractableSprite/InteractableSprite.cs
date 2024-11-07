@@ -1,11 +1,12 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
-public class InteractableSprite : MonoBehaviour, IPointerDownHandler
+public class InteractableSprite : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private const string MaterialEnablePropertyName = "_IsEnable";
 
@@ -13,29 +14,22 @@ public class InteractableSprite : MonoBehaviour, IPointerDownHandler
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private Button _button;
 
+    [Header("PulseAnimationSettings")]
+    [SerializeField] private int _pulses = 5;
+    [SerializeField] private float _duration = 0.2f;
+
     private SpriteRenderer _spriteRenderer;
     private Material _material;
     private bool _isEnabled = true;
+    private Coroutine _pulseAnimation;
 
     public event Action Pressed;
 
-    public  bool IsEnabled => _isEnabled;
-
-    private void Awake()
-    {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _material = new Material (_spriteRenderer.material);
-        _spriteRenderer.material = _material;
-        _button.onClick.AddListener(BecameInteractable);
-    }
-
-    private void OnDestroy()
-    {
-        _button.onClick.RemoveListener(BecameInteractable);
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (_pulseAnimation != null)
+            StopCoroutine(_pulseAnimation);
+
         if (_isEnabled == false)
             return;
 
@@ -45,10 +39,64 @@ public class InteractableSprite : MonoBehaviour, IPointerDownHandler
         _isEnabled = false;
         Pressed?.Invoke();
     }
-    
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (_pulseAnimation != null)
+            StopCoroutine(_pulseAnimation);
+
+        if (_isEnabled)
+            _material.SetInt(MaterialEnablePropertyName, 0);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (_pulseAnimation != null)
+            StopCoroutine(_pulseAnimation);
+
+        if (_isEnabled)
+            _material.SetInt(MaterialEnablePropertyName, 1);
+    }
+
+    public bool IsEnabled => _isEnabled;
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _material = new Material(_spriteRenderer.material);
+        _spriteRenderer.material = _material;
+        _material.SetInt(MaterialEnablePropertyName, 0);
+        _button.onClick.AddListener(BecameInteractable);
+    }
+
+    private void OnDestroy()
+    {
+        _button.onClick.RemoveListener(BecameInteractable);
+    }
+
     public void BecameInteractable()
     {
-        _material.SetInt(MaterialEnablePropertyName, 1);
         _isEnabled = true;
+    }
+
+    public void PlayPulseAnimation()
+    {
+        if(_pulseAnimation != null)
+            StopCoroutine(_pulseAnimation);
+
+        _pulseAnimation = StartCoroutine(Animate());
+    }
+
+    private IEnumerator Animate()
+    {
+        WaitForSeconds delay = new WaitForSeconds(_duration);
+
+        for (int i = 0; i < _pulses; i++)
+        {
+            _material.SetInt(MaterialEnablePropertyName, 1);
+            yield return delay;
+            _material.SetInt(MaterialEnablePropertyName, 0);
+            yield return delay;
+        }
     }
 }
