@@ -1198,7 +1198,7 @@ MonoBehaviour:
   _windowThatWillBeOpened: {fileID: 1455802750}
   _audioSource: {fileID: 1934630178}
   _button: {fileID: 1876823730}
-  _pulses: 5
+  _pulses: 3
   _duration: 0.2
 --- !u!61 &387156254
 BoxCollider2D:
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   _windowThatWillBeOpened: {fileID: 420603192}
   _audioSource: {fileID: 1934630178}
   _button: {fileID: 100981901}
-  _pulses: 5
+  _pulses: 3
   _duration: 0.2
 --- !u!61 &391030992
 BoxCollider2D:
@@ -1781,6 +1781,7 @@ GameObject:
   - component: {fileID: 438261561}
   - component: {fileID: 438261560}
   - component: {fileID: 438261562}
+  - component: {fileID: 438261563}
   m_Layer: 0
   m_Name: 2
   m_TagString: Untagged
@@ -1916,6 +1917,23 @@ MonoBehaviour:
   _stepFrequence: 0.5
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.1
+--- !u!114 &438261563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438261557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324c7950a2f7e1a4d9bcb04d54a9850b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windowThatWillBeOpened: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _button: {fileID: 0}
+  _pulses: 3
+  _duration: 0.2
 --- !u!1 &459126250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,14 +2324,16 @@ MonoBehaviour:
   _bugSpriteChanger: {fileID: 387156255}
   _newQuestInitializer: {fileID: 691537739}
   _peasants:
-  - {fileID: 1602567828}
-  - {fileID: 438261562}
-  - {fileID: 1984597953}
+  - {fileID: 1602567829}
+  - {fileID: 438261563}
+  - {fileID: 1984597954}
   _moodInfoView: {fileID: 691537743}
   _healthView: {fileID: 691537744}
+  _moodInfoAcceptButton: {fileID: 267519015}
   _dayView: {fileID: 691537736}
   _tutorial: {fileID: 422162096}
   _nextDayButton: {fileID: 788541808}
+  _tutorialAcceptButton: {fileID: 1525162338}
 --- !u!4 &691537738
 Transform:
   m_ObjectHideFlags: 0
@@ -4263,6 +4283,7 @@ GameObject:
   - component: {fileID: 1602567827}
   - component: {fileID: 1602567826}
   - component: {fileID: 1602567828}
+  - component: {fileID: 1602567829}
   m_Layer: 0
   m_Name: 1
   m_TagString: Untagged
@@ -4398,6 +4419,23 @@ MonoBehaviour:
   _stepFrequence: 0.5
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.1
+--- !u!114 &1602567829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602567823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324c7950a2f7e1a4d9bcb04d54a9850b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windowThatWillBeOpened: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _button: {fileID: 0}
+  _pulses: 3
+  _duration: 0.2
 --- !u!1 &1618768732
 GameObject:
   m_ObjectHideFlags: 0
@@ -5273,6 +5311,7 @@ GameObject:
   - component: {fileID: 1984597952}
   - component: {fileID: 1984597951}
   - component: {fileID: 1984597953}
+  - component: {fileID: 1984597954}
   m_Layer: 0
   m_Name: 3
   m_TagString: Untagged
@@ -5408,6 +5447,23 @@ MonoBehaviour:
   _stepFrequence: 0.5
   _targetPoint: {fileID: 2112555159}
   _stepValue: 0.1
+--- !u!114 &1984597954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984597948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324c7950a2f7e1a4d9bcb04d54a9850b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _windowThatWillBeOpened: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _button: {fileID: 0}
+  _pulses: 3
+  _duration: 0.2
 --- !u!1 &1989935445
 GameObject:
   m_ObjectHideFlags: 0

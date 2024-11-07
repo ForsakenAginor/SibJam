@@ -8,6 +8,7 @@ using Assets.Scripts.Quests.Storage;
 using Assets.Scripts.Quests.Storage.View;
 using Assets.Scripts.SaveSystem;
 using Assets.Scripts.Sound.AudioMixer;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,17 +35,19 @@ public class Root : MonoBehaviour
 
     [Header("QuestGivingSystem")]
     [SerializeField] private NewQuestInitializer _newQuestInitializer;
-    [SerializeField] private List<InteractablePeasant> _peasants;
+    [SerializeField] private List<InteractableSprite> _peasants;
 
     [Header("HealthSystem")]
     [SerializeField] private MoodInfoView _moodInfoView;
     [SerializeField] private HealthView _healthView;
+    [SerializeField] private Button _moodInfoAcceptButton;
     private Health _mood;
 
     [Header("GameProgress")]
     [SerializeField] private DayView _dayView;
     [SerializeField] private UIElement _tutorial;
     [SerializeField] private Button _nextDayButton;
+    [SerializeField] private Button _tutorialAcceptButton;
     private QuestAcceptingMonitor _questAcceptingMonitor;
     bool _isFinished = false;
 
@@ -101,7 +104,10 @@ public class Root : MonoBehaviour
 
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled += OnAllQuestHandled;
+        _moodInfoAcceptButton.onClick.AddListener(OnEntryMessageAccept);
+        _tutorialAcceptButton.onClick.AddListener(OnEntryMessageAccept);
     }
+
 
     private void OnDestroy()
     {
@@ -110,6 +116,12 @@ public class Root : MonoBehaviour
 
         _nextDayButton.onClick.RemoveListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled -= OnAllQuestHandled;
+    }
+
+    private void OnEntryMessageAccept()
+    {
+        foreach(var peasant in _peasants)
+            peasant.PlayPulseAnimation();
     }
 
     private void OnNextDayButtonClick()

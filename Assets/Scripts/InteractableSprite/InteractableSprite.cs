@@ -34,7 +34,10 @@ public class InteractableSprite : MonoBehaviour, IPointerDownHandler, IPointerEn
             return;
 
         _material.SetInt(MaterialEnablePropertyName, 0);
-        _audioSource.Play();
+
+        if (_audioSource != null)
+            _audioSource.Play();
+
         _windowThatWillBeOpened.Enable();
         _isEnabled = false;
         Pressed?.Invoke();
@@ -66,12 +69,20 @@ public class InteractableSprite : MonoBehaviour, IPointerDownHandler, IPointerEn
         _material = new Material(_spriteRenderer.material);
         _spriteRenderer.material = _material;
         _material.SetInt(MaterialEnablePropertyName, 0);
-        _button.onClick.AddListener(BecameInteractable);
+
+        if (_button != null)
+            _button.onClick.AddListener(BecameInteractable);
     }
 
     private void OnDestroy()
     {
-        _button.onClick.RemoveListener(BecameInteractable);
+        if (_button != null)
+            _button.onClick.RemoveListener(BecameInteractable);
+    }
+
+    public void Init(UIElement targetWindow)
+    {
+        _windowThatWillBeOpened = targetWindow != null ? targetWindow : throw new ArgumentNullException(nameof(targetWindow));
     }
 
     public void BecameInteractable()
@@ -81,7 +92,7 @@ public class InteractableSprite : MonoBehaviour, IPointerDownHandler, IPointerEn
 
     public void PlayPulseAnimation()
     {
-        if(_pulseAnimation != null)
+        if (_pulseAnimation != null)
             StopCoroutine(_pulseAnimation);
 
         _pulseAnimation = StartCoroutine(Animate());

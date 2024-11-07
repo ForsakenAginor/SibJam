@@ -26,7 +26,7 @@ namespace Assets.Scripts.Quests.QuestCreation.View
         public event Action<Quest> QuestPlaced;
         public event Action<Quest> QuestStored;
 
-        public void Init(IEnumerable<Quest> newQuests, IEventsInfoGetter configuration, List<InteractablePeasant> peasants)
+        public void Init(IEnumerable<Quest> newQuests, IEventsInfoGetter configuration, List<InteractableSprite> peasants)
         {
             if (peasants == null)
                 throw new ArgumentNullException(nameof(peasants));
