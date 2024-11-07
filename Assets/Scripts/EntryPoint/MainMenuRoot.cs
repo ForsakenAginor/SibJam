@@ -1,3 +1,4 @@
+using Assets.Scripts.General;
 using Assets.Scripts.Sound.AudioMixer;
 using UnityEngine;
 
@@ -13,5 +14,7 @@ public class MainMenuRoot : MonoBehaviour
             _soundInitializer.AddMusicSource(MusicSingleton.Instance.Music);
         else
             _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
+
+        SceneChangerSingleton.Instance.FadeOut();
     }
 }

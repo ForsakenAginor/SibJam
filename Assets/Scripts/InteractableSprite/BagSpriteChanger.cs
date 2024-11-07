@@ -3,15 +3,18 @@ using Assets.Scripts.Quests.Storage;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class BagSpriteChanger : MonoBehaviour
 {
+    [SerializeField] private InteractableSprite _interactableSprite;
+    [SerializeField] private Button _button;
+
+    [Header("Sprites variation")]
     [SerializeField] private Sprite _openEmptySprite;
     [SerializeField] private Sprite _openFullSprite;
     [SerializeField] private Sprite _closeSprite;
-
-    [SerializeField] private InteractableSprite _interactableSprite;
 
     private SpriteRenderer _renderer;
     private QuestStorage _bag;
@@ -19,12 +22,15 @@ public class BagSpriteChanger : MonoBehaviour
     private void Awake()
     {
         _renderer = GetComponent<SpriteRenderer>();
+        _renderer.sprite = _closeSprite;
         _interactableSprite.Pressed += OnPressed;
+        _button.onClick.AddListener(OnButtonPressed);
     }
 
-    private void Start()
+    private void OnDestroy()
     {
-        _renderer.sprite = _closeSprite;
+        _interactableSprite.Pressed -= OnPressed;
+        _button.onClick.RemoveListener(OnButtonPressed);
     }
 
     public void Init(QuestStorage bag)
@@ -34,7 +40,7 @@ public class BagSpriteChanger : MonoBehaviour
         _bag.QuestRemoved += OnPressed;
     }
 
-    public void CloseBag()
+    private void OnButtonPressed()
     {
         _renderer.sprite = _closeSprite;
     }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.General
@@ -20,15 +19,10 @@ namespace Assets.Scripts.General
         {
             _button.onClick.RemoveListener(OnButtonClick);
         }
-        public void MainScene()
-        {
-            SceneManager.LoadScene(_scene.ToString());
-        }
 
         private void OnButtonClick()
         {
-            Invoke("MainScene", 0.5f);
+            SceneChangerSingleton.Instance.LoadScene(_scene.ToString());
         }
-
     }
 }

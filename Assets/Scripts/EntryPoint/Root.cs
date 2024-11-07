@@ -97,6 +97,8 @@ public class Root : MonoBehaviour
         _bagViewCreator.Init(_bag, _eventsConfiguration);
         _deskViewCreator.Init(_desk, _eventsConfiguration);
 
+        SceneChangerSingleton.Instance.FadeOut();
+
         _nextDayButton.onClick.AddListener(OnNextDayButtonClick);
         _questAcceptingMonitor.AllQuestsHandled += OnAllQuestHandled;
     }
@@ -116,7 +118,7 @@ public class Root : MonoBehaviour
         _bag.SaveData();
         _desk.SaveData();
         _saveLoadSystem.SaveMood(_mood);
-        SceneManager.LoadScene(Scenes.Consequences.ToString());
+        SceneChangerSingleton.Instance.LoadScene(Scenes.Consequences.ToString());
     }
 
     private void OnAllQuestHandled()

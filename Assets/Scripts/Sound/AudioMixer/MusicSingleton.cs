@@ -8,7 +8,7 @@ namespace Assets.Scripts.Sound.AudioMixer
         [SerializeField] private AudioSource _music;
         private bool _isAdded;
 
-        public static MusicSingleton Instance { get { return _instance; } }
+        public static MusicSingleton Instance => _instance;
 
         public AudioSource Music
         {

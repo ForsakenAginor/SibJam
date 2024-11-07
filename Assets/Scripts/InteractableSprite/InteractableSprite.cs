@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -10,6 +11,7 @@ public class InteractableSprite : MonoBehaviour, IPointerDownHandler
 
     [SerializeField] private UIElement _windowThatWillBeOpened;
     [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private Button _button;
 
     private SpriteRenderer _spriteRenderer;
     private Material _material;
@@ -24,6 +26,12 @@ public class InteractableSprite : MonoBehaviour, IPointerDownHandler
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _material = new Material (_spriteRenderer.material);
         _spriteRenderer.material = _material;
+        _button.onClick.AddListener(BecameInteractable);
+    }
+
+    private void OnDestroy()
+    {
+        _button.onClick.RemoveListener(BecameInteractable);
     }
 
     public void OnPointerDown(PointerEventData eventData)
