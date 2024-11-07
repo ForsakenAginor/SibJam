@@ -4,42 +4,45 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(CardController))]
-public class CardView : MonoBehaviour
+namespace Assets.Scripts.Consequences
 {
-    [SerializeField] private Image _image;
-    [SerializeField] private TMP_Text _description;
-    [SerializeField] private TMP_Text _header;
-
-    private CardController _controller;
-
-    private void Awake()
+    [RequireComponent(typeof(CardController))]
+    public class CardView : MonoBehaviour
     {
-        _controller = GetComponent<CardController>();
-    }
+        [SerializeField] private Image _image;
+        [SerializeField] private TMP_Text _description;
+        [SerializeField] private TMP_Text _header;
 
-    public void Init(Sprite sprite, string name, string description, AudioSource audioSource, Action<IKey> callback)
-    {
-        if (sprite == null)
-            throw new ArgumentNullException(nameof(sprite));
+        private CardController _controller;
 
-        if (string.IsNullOrEmpty(name))
-            throw new ArgumentNullException(nameof(name));
+        private void Awake()
+        {
+            _controller = GetComponent<CardController>();
+        }
 
-        if (string.IsNullOrEmpty(description))
-            throw new ArgumentNullException(nameof(description));
+        public void Init(Sprite sprite, string name, string description, AudioSource audioSource, Action<IKey> callback)
+        {
+            if (sprite == null)
+                throw new ArgumentNullException(nameof(sprite));
 
-        if(audioSource == null)
-            throw new ArgumentNullException(nameof(audioSource));
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentNullException(nameof(name));
 
-        _image.sprite = sprite;
-        _header.text = name;
-        _description.text = description;
-        _controller.Init(audioSource, callback);
-    }
+            if (string.IsNullOrEmpty(description))
+                throw new ArgumentNullException(nameof(description));
 
-    public IKey GetKey()
-    {
-        return _controller;
+            if (audioSource == null)
+                throw new ArgumentNullException(nameof(audioSource));
+
+            _image.sprite = sprite;
+            _header.text = name;
+            _description.text = description;
+            _controller.Init(audioSource, callback);
+        }
+
+        public IKey GetKey()
+        {
+            return _controller;
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.EventConfiguration;
 using Assets.Scripts.General;
+using Assets.Scripts.InteractableObjects;
+using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

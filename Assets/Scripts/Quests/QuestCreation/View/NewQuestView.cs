@@ -1,5 +1,6 @@
 using Assets.Scripts.General;
 using Assets.Scripts.Quests.QuestCreation.Controller;
+using Assets.Scripts.UI;
 using System;
 using TMPro;
 using UnityEngine;

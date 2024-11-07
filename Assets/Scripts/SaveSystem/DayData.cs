@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.DaySystem;
+using UnityEngine;
 
 namespace Assets.Scripts.SaveSystem
 {

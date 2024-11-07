@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.EventConfiguration;
+﻿using Assets.Scripts.DaySystem;
+using Assets.Scripts.EventConfiguration;
 using Assets.Scripts.SaveSystem;
 
 namespace Assets.Scripts.Quests
