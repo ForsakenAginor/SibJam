@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: fa629be30cdd0054d8f1c46bab57aed9
+  - enabled: 1
+    path: Assets/Scenes/TestScene.unity
+    guid: 765d1e222fe97ad4382b03615c4d8b78
+  - enabled: 1
+    path: Assets/Scenes/BootsTrap.unity
+    guid: 40237c1ad488b9b49af1d18e16cb6051
   m_configObjects: {}

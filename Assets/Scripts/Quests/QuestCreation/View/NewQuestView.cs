@@ -1,6 +1,7 @@
 using Assets.Scripts.General;
 using Assets.Scripts.Quests.QuestCreation.Controller;
 using Assets.Scripts.UI;
+using Lean.Localization;
 using System;
 using TMPro;
 using UnityEngine;
@@ -11,8 +12,8 @@ namespace Assets.Scripts.Quests.QuestCreation.View
     [RequireComponent(typeof(NewQuestController))]
     public class NewQuestView : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _description;
-        [SerializeField] private TMP_Text _header;
+        [SerializeField] private LeanLocalizedTextMeshProUGUI _description;
+        [SerializeField] private LeanLocalizedTextMeshProUGUI _header;
 
         private NewQuestController _controller;
         private UIElement _uiElement;
@@ -39,8 +40,10 @@ namespace Assets.Scripts.Quests.QuestCreation.View
             if (toBagSound == null)
                 throw new ArgumentNullException(nameof(toBagSound));
 
-            _header.text = name;
-            _description.text = description;
+            _header.TranslationName = name;
+            _header.UpdateLocalization();
+            _description.TranslationName = description;
+            _description.UpdateLocalization();
             _controller.Init(toDeskSound, toBagSound, accept, decline);
         }
 

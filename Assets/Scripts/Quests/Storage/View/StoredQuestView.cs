@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.UI;
+using Lean.Localization;
 using System;
 using TMPro;
 using UnityEngine;
@@ -8,8 +9,8 @@ namespace Assets.Scripts.Quests.Storage.View
     [RequireComponent(typeof(UIElement))]
     public class StoredQuestView : MonoBehaviour
     {
-        [SerializeField] private TMP_Text _description;
-        [SerializeField] private TMP_Text _header;
+        [SerializeField] private LeanLocalizedTextMeshProUGUI _description;
+        [SerializeField] private LeanLocalizedTextMeshProUGUI _header;
         [SerializeField] private TMP_Text _daysRemaining;
 
         private UIElement _uIElement;
@@ -30,8 +31,10 @@ namespace Assets.Scripts.Quests.Storage.View
             if (daysToExpire <= 0)
                 throw new ArgumentOutOfRangeException(nameof(daysToExpire));
 
-            _header.text = name;
-            _description.text = description;
+            _header.TranslationName = name;
+            _header.UpdateLocalization();
+            _description.TranslationName = description;
+            _description.UpdateLocalization();
             _daysRemaining.text = daysToExpire.ToString();
         }
 
