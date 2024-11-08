@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 61296290}
   - component: {fileID: 61296292}
   - component: {fileID: 61296291}
+  - component: {fileID: 61296293}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0410\u041D\u041E\u0412\u041E"
+  m_text: Restart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab09d43b06a990c438b631aaa0d785f9, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: ab09d43b06a990c438b631aaa0d785f9, type: 2}
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.45
   m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -256,6 +257,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61296289}
   m_CullTransparentMesh: 1
+--- !u!114 &61296293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61296289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Restart
+  FallbackText: ERROR
 --- !u!1 &83816007
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,6 +995,7 @@ GameObject:
   - component: {fileID: 843359025}
   - component: {fileID: 843359027}
   - component: {fileID: 843359026}
+  - component: {fileID: 843359028}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1026,11 +1042,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0412\u0430\u0436\u043D\u044B\u0435 \u043F\u0440\u043E\u0441\u044C\u0431\u044B
-    \u043D\u0435 \u0431\u044B\u043B\u0438 \u0432\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u044B
-    \u0438 \u0436\u0438\u0442\u0435\u043B\u0438 \u0432 \u044F\u0440\u043E\u0441\u0442\u0438!\n\n\u041E\u043D\u0438
-    \u0433\u0440\u043E\u043C\u044F\u0442 \u0432\u0441\u0451 \u043D\u0430 \u0441\u0432\u043E\u0451\u043C
-    \u043F\u0443\u0442\u0438 \u0438 \u0438\u0434\u0443\u0442 \u043A \u0432\u0430\u043C!"
+  m_text: 'Important requests were not fulfilled and the residents are furious!
+
+
+    They
+    are destroying everything in their path and are coming to you!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab09d43b06a990c438b631aaa0d785f9, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: ab09d43b06a990c438b631aaa0d785f9, type: 2}
@@ -1057,7 +1073,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.7
+  m_fontSize: 48.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1107,6 +1123,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843359024}
   m_CullTransparentMesh: 1
+--- !u!114 &843359028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843359024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: LosePhrase
+  FallbackText: ERROR
 --- !u!1 &1098192142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1307,7 @@ GameObject:
   - component: {fileID: 1764215959}
   - component: {fileID: 1764215961}
   - component: {fileID: 1764215960}
+  - component: {fileID: 1764215962}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1323,7 +1354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041C\u0415\u041D\u042E"
+  m_text: Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ab09d43b06a990c438b631aaa0d785f9, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: ab09d43b06a990c438b631aaa0d785f9, type: 2}
@@ -1400,6 +1431,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764215958}
   m_CullTransparentMesh: 1
+--- !u!114 &1764215962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764215958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Menu
+  FallbackText: ERROR
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
