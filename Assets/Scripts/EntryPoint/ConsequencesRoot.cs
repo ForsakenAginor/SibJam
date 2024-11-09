@@ -20,6 +20,7 @@ namespace Assets.Scripts.EntryPoint
         [SerializeField] private ConsequencesCardsShower _consequencesCardsShower;
         [SerializeField] private DeskViewChanger _deskViewChanger;
         [SerializeField] private HeroAnimation _heroAnimation;
+        [SerializeField, Range(0f, 1f)] private float _chanceToTakeTwoQuests = 0.2f;
         [SerializeField] private float _animationDuration = 5f;
 
         private HealthDamageSystem _healthDamageSystem;
@@ -42,8 +43,20 @@ namespace Assets.Scripts.EntryPoint
             savedQuests = saveLoadSystem.GetPlacedQuests();
             _deskViewChanger.Init(savedQuests.Count);
 
+            // chance to take 2 quests instead of one
             RandomQuestPicker questPicker = new RandomQuestPicker();
-            Quest chosedQuest = questPicker.ChoseRandomQuest(savedQuests);
+            List<Quest> chosedQuests = new List<Quest>();
+
+            float seed = Random.Range(0f, 1f);
+            int iterations = seed < _chanceToTakeTwoQuests ? 2 : 1;
+
+            for (int i = 0; i < iterations; i++)
+            {
+                Quest chosedQuest = questPicker.ChoseRandomQuest(savedQuests);
+                chosedQuests.Add(chosedQuest);
+            }
+            //*******************************************
+
             quests.Clear();
             ExpireQuests(currentDay, expiredQuests, quests, savedQuests);
             saveLoadSystem.SavePlacedQuests(quests);
@@ -52,7 +65,7 @@ namespace Assets.Scripts.EntryPoint
             _consequencesCardsShower.AllEventsShown += OnAllEventsShown;
             _healthDamageSystem = new HealthDamageSystem(_consequencesCardsShower, _eventsConfiguration, saveLoadSystem);
 
-            StartCoroutine(WaitAnimationPlayed(expiredQuests, chosedQuest));
+            StartCoroutine(WaitAnimationPlayed(expiredQuests, chosedQuests));
             SceneChangerSingleton.Instance.FadeOut();
         }
 
@@ -61,13 +74,13 @@ namespace Assets.Scripts.EntryPoint
             _consequencesCardsShower.AllEventsShown -= OnAllEventsShown;
         }
 
-        private IEnumerator WaitAnimationPlayed(List<Quest> expiredQuests, Quest chosedQuest)
+        private IEnumerator WaitAnimationPlayed(List<Quest> expiredQuests, List<Quest> chosedQuests)
         {
             WaitForSeconds delay = new WaitForSeconds(_animationDuration);
             yield return delay;
             _deskViewChanger.ChangeDesk();
             yield return delay;
-            _consequencesCardsShower.Init(expiredQuests, chosedQuest, _eventsConfiguration);
+            _consequencesCardsShower.Init(expiredQuests, chosedQuests, _eventsConfiguration);
         }
 
         private void ExpireQuests(Days currentDay, List<Quest> expiredQuests,

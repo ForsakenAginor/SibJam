@@ -46,9 +46,11 @@ public class TEST : MonoBehaviour
         foreach (var quest in Enum.GetValues(typeof(EventNames)))
         {
             Quest item = new Quest((EventNames)quest, Assets.Scripts.DaySystem.Days.Monday);
+            List<Quest> list = new List<Quest>();
+            list.Add(item);
             _quests.Add(item);
             _fullList.Add(item);
-            _consequencesCardsShower.Init(_quests, item, _eventsConfiguration);
+            _consequencesCardsShower.Init(_quests, list, _eventsConfiguration);
             _quests.Clear();
         }
 
