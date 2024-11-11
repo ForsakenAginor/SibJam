@@ -11,6 +11,7 @@ using Assets.Scripts.Quests.Storage.View;
 using Assets.Scripts.SaveSystem;
 using Assets.Scripts.Sound.AudioMixer;
 using Assets.Scripts.UI;
+using Assets.Scripts.UnityAnalytics;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -55,12 +56,15 @@ namespace Assets.Scripts.EntryPoint
         private QuestAcceptingMonitor _questAcceptingMonitor;
         bool _isFinished = false;
 
+        [Header("AnalyticHarvester")]
+        private AnalyticHarvester _analyticHarvester = new ();
+
         private void Start()
         {
             _soundInitializer.Init();
             _soundInitializer.AddMusicSourceWithoutVolumeChanging(MusicSingleton.Instance.Music);
             _saveLoadSystem = new SaveLoadSystem();
-            _nextDayButton.interactable = false;
+            _nextDayButton.interactable = false;            
 
             Days currentDay = _saveLoadSystem.GetCurrentDay();
             _mood = _saveLoadSystem.GetMood();
@@ -68,16 +72,21 @@ namespace Assets.Scripts.EntryPoint
             _dayView.Init(currentDay);
 
             if (currentDay == Days.Monday)
+            {
                 _tutorial.Enable();
+                _analyticHarvester.CreateLog(AnalyticsEvent.GameStarted);
+            }
 
             if (_mood == Health.Riot)
             {
+                _analyticHarvester.CreateLog(AnalyticsEvent.GameLosed);
                 SceneManager.LoadScene(Scenes.LoseScene.ToString());
                 _isFinished = true;
                 return;
             }
             else if (currentDay == Days.Final)
             {
+                _analyticHarvester.CreateLog(AnalyticsEvent.GameWon);
                 SceneManager.LoadScene(Scenes.WinScene.ToString());
                 _isFinished = true;
                 return;

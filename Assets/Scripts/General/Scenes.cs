@@ -6,6 +6,7 @@ namespace Assets.Scripts.General
         GameScene,
         Consequences,
         WinScene,
-        LoseScene
+        LoseScene,
+        TestScene,
     }
 }

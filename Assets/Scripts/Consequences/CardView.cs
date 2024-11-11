@@ -1,6 +1,6 @@
 using Assets.Scripts.General;
+using Lean.Localization;
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +10,8 @@ namespace Assets.Scripts.Consequences
     public class CardView : MonoBehaviour
     {
         [SerializeField] private Image _image;
-        [SerializeField] private TMP_Text _description;
-        [SerializeField] private TMP_Text _header;
+        [SerializeField] private LeanLocalizedTextMeshProUGUI _description;
+        [SerializeField] private LeanLocalizedTextMeshProUGUI _header;
 
         private CardController _controller;
 
@@ -35,8 +35,10 @@ namespace Assets.Scripts.Consequences
                 throw new ArgumentNullException(nameof(audioSource));
 
             _image.sprite = sprite;
-            _header.text = name;
-            _description.text = description;
+            _header.TranslationName = name;
+            _header.UpdateLocalization();
+            _description.TranslationName = description;
+            _description.UpdateLocalization();
             _controller.Init(audioSource, callback);
         }
 

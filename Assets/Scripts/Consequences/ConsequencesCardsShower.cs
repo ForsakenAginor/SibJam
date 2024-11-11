@@ -20,13 +20,15 @@ namespace Assets.Scripts.Consequences
         public event Action AllEventsShown;
         public event Action<Quest> QuestExpired;
 
-        public void Init(IEnumerable<Quest> expiredQuests, Quest chosedQuest, IEventsInfoGetter configuration)
+        public void Init(IEnumerable<Quest> expiredQuests, List<Quest> chosedQuests, IEventsInfoGetter configuration)
         {
+            if (chosedQuests == null)
+                throw new ArgumentNullException(nameof(chosedQuests));
+
             _eventsInfoGetter = configuration != null ? configuration : throw new ArgumentNullException(nameof(configuration));
 
             if (expiredQuests == null)
                 throw new ArgumentNullException(nameof(expiredQuests));
-
 
             foreach (var quest in expiredQuests)
             {
@@ -40,15 +42,18 @@ namespace Assets.Scripts.Consequences
                 QuestExpired?.Invoke(quest);
             }
 
-            if (chosedQuest != null)
+            if (chosedQuests.Count > 0)
             {
-                var view = Instantiate(_cardPrefab, _holder);
-                view.Init(_eventsInfoGetter.GetSuccessSprite(chosedQuest.EventName),
-                    _eventsInfoGetter.GetName(chosedQuest.EventName),
-                    _eventsInfoGetter.GetSuccessDescription(chosedQuest.EventName),
-                    _audioSource,
-                    OnQuestShown);
-                _quests.Add(view.GetKey());
+                foreach (var quest in chosedQuests)
+                {
+                    var view = Instantiate(_cardPrefab, _holder);
+                    view.Init(_eventsInfoGetter.GetSuccessSprite(quest.EventName),
+                        _eventsInfoGetter.GetName(quest.EventName),
+                        _eventsInfoGetter.GetSuccessDescription(quest.EventName),
+                        _audioSource,
+                        OnQuestShown);
+                    _quests.Add(view.GetKey());
+                }
             }
 
             if (_quests.Count == 0)

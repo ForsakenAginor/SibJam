@@ -62,11 +62,11 @@ namespace Assets.Scripts.Quests.QuestCreation.View
                 ui.Disable();
                 list.Add(ui);
             }
-
+            
             if (peasants.Count != list.Count)
                 throw new Exception("peasants count don't equal quests count");
-
-            for (int i = 0; i < peasants.Count; i++)
+            
+            for (int i = 0; i < list.Count; i++)
                 peasants[i].Init(list[i]);
         }
 
