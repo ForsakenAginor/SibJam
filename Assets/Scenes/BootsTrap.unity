@@ -8822,6 +8822,50 @@ MonoBehaviour:
   - Language: Russian
     Text: "\u041C\u0435\u043D\u044E"
     Object: {fileID: 0}
+--- !u!1 &1992448600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1992448602}
+  - component: {fileID: 1992448601}
+  m_Layer: 0
+  m_Name: Analytics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1992448601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992448600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2477b76c1c3471542baae58d5eaabe69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1992448602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992448600}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 647.6428, y: 744.6887, z: -4.899473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2009661903
 GameObject:
   m_ObjectHideFlags: 0
@@ -9183,6 +9227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96124192f025c5947a680552d8ceab5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _analyticsService: {fileID: 1992448601}
 --- !u!1 &2117170074
 GameObject:
   m_ObjectHideFlags: 0
@@ -9339,3 +9384,4 @@ SceneRoots:
   - {fileID: 2092414847}
   - {fileID: 228984496}
   - {fileID: 2036828889}
+  - {fileID: 1992448602}
