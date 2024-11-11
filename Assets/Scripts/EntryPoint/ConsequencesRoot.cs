@@ -53,7 +53,9 @@ namespace Assets.Scripts.EntryPoint
             for (int i = 0; i < iterations; i++)
             {
                 Quest chosedQuest = questPicker.ChoseRandomQuest(savedQuests);
-                chosedQuests.Add(chosedQuest);
+
+                if (chosedQuest != null)
+                    chosedQuests.Add(chosedQuest);
             }
             //*******************************************
 
